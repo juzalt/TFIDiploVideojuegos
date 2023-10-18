@@ -7,6 +7,7 @@ public class PlayerInteractions : MonoBehaviour
        
     void Update()
     {
+        ShowMouseHover();
         InteractWithObjects();
     }
 
@@ -25,6 +26,30 @@ public class PlayerInteractions : MonoBehaviour
                     currentInteractable.Interact();
                 }
             }
+        }
+    }
+
+    private void ShowMouseHover()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactionLayer))
+        {
+            Interactable newInteractable = hit.collider.GetComponent<Interactable>();
+            if (newInteractable != null && currentInteractable != newInteractable)
+            {
+                currentInteractable = newInteractable;
+                currentInteractable.OnMouseHover();
+            }
+        }
+        else
+        {
+            if (currentInteractable != null)
+            {
+                currentInteractable.OffMouseHover();
+            }
+            currentInteractable = null;
         }
     }
 }
