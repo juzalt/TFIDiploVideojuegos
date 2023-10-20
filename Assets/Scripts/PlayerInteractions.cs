@@ -1,14 +1,31 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerInteractions : MonoBehaviour
 {
     [SerializeField] LayerMask interactionLayer = default;
     private Interactable currentInteractable;
-       
+    NavMeshAgent rudy;
+
+    void Start()
+    {
+        rudy = GetComponent<NavMeshAgent>();
+    }
+
     void Update()
     {
         ShowMouseHover();
         InteractWithObjects();
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                rudy.destination = hit.point;
+            }
+        }
     }
 
     private void InteractWithObjects()
