@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Apple;
 
 public class PlayerInteractions : MonoBehaviour
 {
@@ -20,18 +19,23 @@ public class PlayerInteractions : MonoBehaviour
     {
         ShowMouseHover();
         InteractWithObjects();
-        
+        Move();
+    }
+
+    private void Move()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                animator.SetBool("isWalking", true);
                 rudy.destination = hit.point;
                 destination = hit.point;
             }
         }
+
+        animator.SetBool("isWalking", rudy.velocity != Vector3.zero);
 
         if (Vector3.Distance(transform.position, destination) < 0.1)
         {
