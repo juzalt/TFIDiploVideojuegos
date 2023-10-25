@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!195 &58054745
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -319,6 +319,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 37c525bf459dfcd4ab7dd6d9df5e801c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1557,6 +1558,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 37c525bf459dfcd4ab7dd6d9df5e801c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -6,4 +6,5 @@ public class Computer : Interactable
     {
         Debug.Log("Using computer");
     }
+
 }
