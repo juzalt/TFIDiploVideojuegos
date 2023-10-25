@@ -1,15 +1,19 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Apple;
 
 public class PlayerInteractions : MonoBehaviour
 {
     [SerializeField] LayerMask interactionLayer = default;
     private Interactable currentInteractable;
     NavMeshAgent rudy;
+    private Animator animator;
+    private Vector3 destination;
 
     void Start()
     {
         rudy = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -23,8 +27,15 @@ public class PlayerInteractions : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
+                animator.SetBool("isWalking", true);
                 rudy.destination = hit.point;
+                destination = hit.point;
             }
+        }
+
+        if (Vector3.Distance(transform.position, destination) < 0.1)
+        {
+            animator.SetBool("isWalking", false);
         }
     }
 
