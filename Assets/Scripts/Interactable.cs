@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour
 {
     Color glowColor = new(0.4f, 0.4f, 0.4f);
-    float glowfactor = 1f;
+    float glowfactor = 1.3f;
     MeshRenderer meshRenderer;
 
     public virtual void Awake()
