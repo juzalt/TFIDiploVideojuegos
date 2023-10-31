@@ -1,36 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragAndDrop : MonoBehaviour
 {
-    private RectTransform rectTransform;
-    private Image image;
-    private GameObject objectToFind;
+    [SerializeField] Camera camera;
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public GameObject selectedObject;
+    Vector3 offset;
+
+    void Update()
     {
-        image.color = new Color32(255, 255, 255, 170);
-    }
+        //Debug.Log(Input.mousePosition);
+        Vector3 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        rectTransform.anchoredPosition += eventData.delta;
+        if (Input.GetMouseButtonDown(0))
+        {
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
 
-        //transform.position = Input.mousePosition;
-    }
+            if (targetObject)
+            {
+                selectedObject = targetObject.transform.gameObject;
+                Debug.Log(selectedObject);
+                offset = selectedObject.transform.position - mousePosition;
+            }
+        }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        image.color = new Color(255, 255, 255, 255);
-    }
+        if (selectedObject)
+        {
+            selectedObject.transform.position = mousePosition + offset;
+        }
 
-    void Start()
-    {
-        Debug.Log(objectToFind.name);
-        rectTransform = GetComponent<RectTransform>();
-        //image = GetComponent();
+        if (Input.GetMouseButtonUp(0) && selectedObject)
+        {
+            selectedObject = null;
+        }
     }
 }
