@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Block _blockPrefab;
     [SerializeField] Camera camera; // Esto no estaba en el tuto pero hacer Camera.main.transform devolvia un error (no encontraba a Camera)
     [SerializeField] private List<BlockType> _types;
+    [SerializeField] private float _travelTime = 0.2f;
     private GameState _state;
     private int _round;
 
@@ -26,6 +28,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ChangeState(GameState.GenerateLevel);
+    }
+
+    private void Update()
+    {
+        if (_state != GameState.WaitingInput) return;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) Shift(Vector2.left);
+        if (Input.GetKeyDown(KeyCode.UpArrow)) Shift(Vector2.up);
+        if (Input.GetKeyDown(KeyCode.RightArrow)) Shift(Vector2.right);
+        if (Input.GetKeyDown(KeyCode.DownArrow)) Shift(Vector2.down);
     }
 
     private void ChangeState(GameState newState)
@@ -57,6 +69,7 @@ public class GameManager : MonoBehaviour
     {
         _round = 0;
         _nodes = new List<Node>();
+        _blocks = new List<Block>();
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -83,12 +96,49 @@ public class GameManager : MonoBehaviour
         foreach (var node in freeNodes.Take(amount)) {
             var block = Instantiate(_blockPrefab, node.Pos, Quaternion.identity);
             block.Init(GetBlockTypeByValue(Random.value > 0.8f ? 4 : 2));
+            block.SetBlock(node);
+            Debug.Log("block>>" + block);
+            Debug.Log("_blocks>>" + _blocks);
+            _blocks.Add(block);
         }
 
         if(freeNodes.Count() == 1) {
             // Perdiste maestre. Tocá de acá.
             return;
         }
+
+        ChangeState(GameState.WaitingInput);
+    }
+
+    void Shift(Vector2 dir)
+    {
+        var orderedBlocks = _blocks.OrderBy(b => b.Pos.x).ThenBy(b => b.Pos.y).ToList();
+
+        if (dir == Vector2.right || dir == Vector2.up) orderedBlocks.Reverse();
+
+        foreach (var block in orderedBlocks)
+        {
+            var next = block.Node;
+            do
+            {
+                block.SetBlock(next);
+
+                var possibleNode = GetNodeAtPosition(next.Pos + dir);
+                if (possibleNode != null)
+                {
+                    // Entra acá cuando hay un nodo en la dirección a la que quiere ir
+                    if (possibleNode.OccupiedBlock == null) next = possibleNode;
+                }
+
+            } while (next != block.Node);
+
+            block.transform.DOMove(block.Node.Pos, _travelTime);
+        }
+    }
+
+    Node GetNodeAtPosition(Vector2 pos)
+    {
+        return _nodes.FirstOrDefault(n => n.Pos == pos);
     }
 }
 
