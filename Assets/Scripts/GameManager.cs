@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Block _blockPrefab;
     [SerializeField] Camera camera; // Esto no estaba en el tuto pero hacer Camera.main.transform devolvia un error (no encontraba a Camera)
     [SerializeField] private List<BlockType> _types;
+    private GameState _state;
+    private int _round;
 
     private List<Node> _nodes;
     private List<Block> _blocks;
@@ -23,11 +25,37 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        GenerateGrid();
+        ChangeState(GameState.GenerateLevel);
+    }
+
+    private void ChangeState(GameState newState)
+    {
+        _state = newState;
+
+        switch (newState)
+        {
+            case GameState.GenerateLevel:
+                GenerateGrid();
+                break;
+            case GameState.SpawningBlocks:
+                SpawnBlocks(_round++ == 0 ? 2 : 1);
+                break;
+            case GameState.WaitingInput:
+                break;
+            case GameState.Moving:
+                break;
+            case GameState.Win:
+                break;
+            case GameState.Lose:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+        }
     }
 
     void GenerateGrid()
     {
+        _round = 0;
         _nodes = new List<Node>();
         for (int x = 0; x < _width; x++)
         {
@@ -45,7 +73,7 @@ public class GameManager : MonoBehaviour
 
         camera.transform.position = new Vector3(center.x, center.y, -10);
 
-        SpawnBlocks(2);
+        ChangeState(GameState.SpawningBlocks);
     }
 
     void SpawnBlocks(int amount)
@@ -69,4 +97,14 @@ public struct BlockType
 {
     public int Value;
     public Color Color;
+}
+
+public enum GameState 
+{
+    GenerateLevel,
+    SpawningBlocks,
+    WaitingInput,
+    Moving,
+    Win,
+    Lose
 }
