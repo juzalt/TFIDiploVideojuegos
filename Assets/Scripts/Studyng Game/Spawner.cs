@@ -4,12 +4,12 @@ using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] Distraction distractionPrefab;
-    private IObjectPool<Distraction> distractionPool;
+    [SerializeField] Consumable distractionPrefab;
+    private IObjectPool<Consumable> distractionPool;
 
     private void Awake()
     {
-        distractionPool = new ObjectPool<Distraction>(
+        distractionPool = new ObjectPool<Consumable>(
             CreateDistraction,
             OnGet,
             OnRelease,
@@ -25,24 +25,24 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private Distraction CreateDistraction()
+    private Consumable CreateDistraction()
     {
-        Distraction distraction = Instantiate(distractionPrefab);
-        distraction.DistractionPool = distractionPool;
+        Consumable distraction = Instantiate(distractionPrefab);
+        distraction.ConsumablePool = distractionPool;
         return distraction;
     }
 
-    private void OnGet(Distraction distraction)
+    private void OnGet(Consumable distraction)
     {
         distraction.gameObject.SetActive(true);
     }
 
-    private void OnRelease(Distraction distraction)
+    private void OnRelease(Consumable distraction)
     {
         distraction.gameObject.SetActive(false);
     }
 
-    private void OnDestroyDistraction(Distraction distraction)
+    private void OnDestroyDistraction(Consumable distraction)
     {
         Destroy(distraction.gameObject);
     }
