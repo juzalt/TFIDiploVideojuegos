@@ -5,8 +5,20 @@ using UnityEngine.Pool;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] Consumable distractionPrefab;
-    private IObjectPool<Consumable> distractionPool;
+    [SerializeField] float timeBetweenSpawns = 2f;
 
+    [Header("Parameters to change spawning rate over time")]
+    [SerializeField] bool spawningGetsFasterWithTime;
+    [Tooltip("Only matters if spawningGetsFasterWithTime is true")]
+    [SerializeField] private float spawningChangingRate;
+    [Tooltip("Only matters if spawningGetsFasterWithTime is true")]
+    [SerializeField] private float minSpawningRate;
+
+
+    private float timerForSpawning = 0;
+    
+    private IObjectPool<Consumable> distractionPool;
+    
     private void Awake()
     {
         distractionPool = new ObjectPool<Consumable>(
@@ -19,9 +31,22 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        UpdateTimerandSpawnObjects();
+    }
+
+    private void UpdateTimerandSpawnObjects()
+    {
+        timerForSpawning += Time.deltaTime;
+        if (timerForSpawning > timeBetweenSpawns)
         {
             distractionPool.Get();
+            timerForSpawning = 0;
+
+            if (spawningGetsFasterWithTime && 
+                timeBetweenSpawns - spawningChangingRate >= minSpawningRate)
+            {
+                timeBetweenSpawns -= spawningChangingRate;
+            }
         }
     }
 
