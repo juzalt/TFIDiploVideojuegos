@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
 
     private Distraction CreateDistraction()
     {
-        Distraction distraction = Instantiate(distractionPrefab, transform.position, Quaternion.identity);
+        Distraction distraction = Instantiate(distractionPrefab);
         distraction.DistractionPool = distractionPool;
         return distraction;
     }
@@ -35,7 +35,6 @@ public class Spawner : MonoBehaviour
     private void OnGet(Distraction distraction)
     {
         distraction.gameObject.SetActive(true);
-        distraction.transform.position = transform.position;
     }
 
     private void OnRelease(Distraction distraction)
