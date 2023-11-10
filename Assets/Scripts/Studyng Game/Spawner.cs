@@ -12,7 +12,9 @@ public class Spawner : MonoBehaviour
         distractionPool = new ObjectPool<Distraction>(
             CreateDistraction,
             OnGet,
-            OnRelease);
+            OnRelease,
+            OnDestroyDistraction,
+            maxSize:10);
     }
 
     private void Update()
@@ -39,5 +41,10 @@ public class Spawner : MonoBehaviour
     private void OnRelease(Distraction distraction)
     {
         distraction.gameObject.SetActive(false);
+    }
+
+    private void OnDestroyDistraction(Distraction distraction)
+    {
+        Destroy(distraction.gameObject);
     }
 }

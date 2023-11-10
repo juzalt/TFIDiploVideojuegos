@@ -12,10 +12,6 @@ public class Distraction : MonoBehaviour
     private IObjectPool<Distraction> distractionPool;
     public IObjectPool<Distraction> DistractionPool { get => distractionPool; set => distractionPool = value; }
 
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
