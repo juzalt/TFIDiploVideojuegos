@@ -17,7 +17,7 @@ public class BrainConcentration : MonoBehaviour
         {
             Distraction distraction = collision.gameObject.GetComponent<Distraction>();
             LoseConcentration(distraction.DistractionMagnitude);
-            distraction.DisableDistraction();
+            distraction.DisableConsumable();
         }
     }
 

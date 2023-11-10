@@ -10,10 +10,10 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         distractionPool = new ObjectPool<Consumable>(
-            CreateDistraction,
+            CreateConsumable,
             OnGet,
             OnRelease,
-            OnDestroyDistraction,
+            OnDestroyConsumable,
             maxSize:10);
     }
 
@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private Consumable CreateDistraction()
+    private Consumable CreateConsumable()
     {
         Consumable distraction = Instantiate(distractionPrefab);
         distraction.ConsumablePool = distractionPool;
@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
         distraction.gameObject.SetActive(false);
     }
 
-    private void OnDestroyDistraction(Consumable distraction)
+    private void OnDestroyConsumable(Consumable distraction)
     {
         Destroy(distraction.gameObject);
     }

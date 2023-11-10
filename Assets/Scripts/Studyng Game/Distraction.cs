@@ -6,12 +6,6 @@ public class Distraction : Consumable
     public float DistractionMagnitude { get => distractionMagnitude; }
     
 
-
-    private void OnEnable()
-    {
-        SetInitialPositionAndMovementDirection();
-    }
-
     void Update()
     {
         Move();
@@ -22,14 +16,4 @@ public class Distraction : Consumable
         transform.position += movementSpeed * Time.deltaTime * movementDirection;
     }
 
-    private void OnBecameInvisible()
-    {
-        if (gameObject.activeSelf)
-            DisableDistraction();
-    }
-
-    public void DisableDistraction()
-    {
-        consumablePool.Release(this);
-    }
 }

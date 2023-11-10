@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public abstract class Consumable : MonoBehaviour
+public class Consumable : MonoBehaviour
 {
     [SerializeField] protected float movementSpeed = 2f;
 
@@ -9,6 +9,11 @@ public abstract class Consumable : MonoBehaviour
     public IObjectPool<Consumable> ConsumablePool { get => consumablePool; set => consumablePool = value; }
 
     protected Vector3 movementDirection;
+
+    private void OnEnable()
+    {
+        SetInitialPositionAndMovementDirection();
+    }
 
     public void SetInitialPositionAndMovementDirection()
     {
@@ -41,6 +46,16 @@ public abstract class Consumable : MonoBehaviour
         worldSpawnPoint.z = 0;
 
         gameObject.transform.position = worldSpawnPoint;
-        Debug.Log("Cambiando posicion inicial");
+    }
+
+    private void OnBecameInvisible()
+    {
+        if (gameObject.activeSelf)
+            DisableConsumable();
+    }
+
+    public void DisableConsumable()
+    {
+        consumablePool.Release(this);
     }
 }

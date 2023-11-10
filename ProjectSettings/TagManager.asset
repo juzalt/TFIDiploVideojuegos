@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plate
   - Distraction
+  - Knowledge
   layers:
   - Default
   - TransparentFX
