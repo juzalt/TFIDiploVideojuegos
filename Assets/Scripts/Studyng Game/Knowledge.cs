@@ -14,6 +14,11 @@ public class Knowledge : Consumable
     // Update is called once per frame
     void Update()
     {
-        
+        Move();
+    }
+
+    void Move()
+    {
+        transform.position += movementSpeed * Time.deltaTime * movementDirection;
     }
 }
