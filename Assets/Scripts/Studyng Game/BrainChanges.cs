@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BrainChanges : MonoBehaviour
 {
     [SerializeField] private float initialConcentration = 10f;
     [SerializeField] private float endGameKnowledge = 10f;
+
+    [Header("UI")]
+    [SerializeField] Slider concentrationSlider;
+    [SerializeField] Slider knowledgeSlider;
 
     private float concentration;
     private float knowledge;
@@ -12,6 +17,9 @@ public class BrainChanges : MonoBehaviour
     {
         concentration = initialConcentration;
         knowledge = 0;
+        UpdateConcentrationUI();
+        UpdateKnowledgeUI();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +41,8 @@ public class BrainChanges : MonoBehaviour
     void LoseConcentration(float distractionMagnitude)
     {
         concentration -= distractionMagnitude;
-        Debug.Log(concentration);
+        UpdateConcentrationUI();
+
         if (concentration <= 0)
         {
             Destroy(gameObject);
@@ -43,10 +52,32 @@ public class BrainChanges : MonoBehaviour
     void GainKnowledge(float knowledgeMagnitude)
     {
         knowledge += knowledgeMagnitude;
-        Debug.Log(knowledge);
+        UpdateKnowledgeUI();
         if (knowledge >= endGameKnowledge)
         {
             Debug.Log("You are ready for the test");
+        }
+    }
+
+    void UpdateConcentrationUI()
+    {
+        concentrationSlider.value = concentration / initialConcentration;
+        if (concentration <= 0)
+        {
+            concentrationSlider.fillRect.gameObject.SetActive(false);
+        }
+    }
+
+    void UpdateKnowledgeUI()
+    {
+        knowledgeSlider.value = knowledge / endGameKnowledge;
+        if (knowledge <= 0)
+        {
+            knowledgeSlider.fillRect.gameObject.SetActive(false);
+        }
+        else if (!knowledgeSlider.fillRect.gameObject.activeSelf)
+        {
+            knowledgeSlider.fillRect.gameObject.SetActive(true);
         }
     }
 }
