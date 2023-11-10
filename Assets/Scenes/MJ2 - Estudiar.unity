@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6965419fae4896840a481eb27fefbae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnable: {fileID: 6836008032279540073, guid: ebf0931ee9248a2408eae8fe8554dd20,
+  distractionPrefab: {fileID: 5818801024790088224, guid: ebf0931ee9248a2408eae8fe8554dd20,
     type: 3}
 --- !u!1 &1104180041
 GameObject:
