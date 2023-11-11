@@ -782,8 +782,8 @@ MonoBehaviour:
     type: 3}
   timeBetweenSpawns: 2
   spawningGetsFasterWithTime: 1
-  spawningChangingRate: 0.1
-  minSpawningRate: 1
+  spawningChangingRate: 0.05
+  minSpawningRate: 0.5
 --- !u!1 &909212048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distractionPrefab: {fileID: 5450568855365047875, guid: aaa5d24d782fdac45a4c876097ad72b3,
     type: 3}
-  timeBetweenSpawns: 2
+  timeBetweenSpawns: 4
   spawningGetsFasterWithTime: 0
   spawningChangingRate: 0
   minSpawningRate: 0
