@@ -5,6 +5,7 @@ public class BrainChanges : MonoBehaviour
 {
     [SerializeField] private float initialConcentration = 10f;
     [SerializeField] private float endGameKnowledge = 10f;
+    [SerializeField] [Range(1, 2)] private float brainGrowthRate = 1.2f;
 
     [Header("UI")]
     [SerializeField] Slider concentrationSlider;
@@ -52,6 +53,7 @@ public class BrainChanges : MonoBehaviour
     void GainKnowledge(float knowledgeMagnitude)
     {
         knowledge += knowledgeMagnitude;
+        transform.localScale = transform.localScale * brainGrowthRate;
         UpdateKnowledgeUI();
         if (knowledge >= endGameKnowledge)
         {
