@@ -134,6 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d56bfe48c030864eba77c703c770db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeedMinMax: {x: 2, y: 10}
-  distractionMagnitude: 1
+  movementSpeedMinMax: {x: 2, y: 7}
+  baseDistractionMagnitude: 1
   sizeRange: {x: 0.5, y: 1}

@@ -568,7 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialConcentration: 10
   endGameKnowledge: 10
-  brainGrowthRate: 1.15
+  brainGrowthRate: 1.1
   concentrationSlider: {fileID: 787037485}
   knowledgeSlider: {fileID: 1831041336}
 --- !u!1 &414675644
