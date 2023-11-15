@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class BrainChanges : MonoBehaviour
     [SerializeField] private float initialConcentration = 10f;
     [SerializeField] private float endGameKnowledge = 10f;
     [SerializeField] [Range(1, 2)] private float brainGrowthRate = 1.2f;
+    [SerializeField] private float inmunityTime = 1f;
 
     [Header("UI")]
     [SerializeField] Slider concentrationSlider;
@@ -13,6 +15,9 @@ public class BrainChanges : MonoBehaviour
 
     private float concentration;
     private float knowledge;
+
+    private bool isInmune;
+    
 
     void Start()
     {
@@ -25,8 +30,9 @@ public class BrainChanges : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Distraction")
+        if (collision.gameObject.tag == "Distraction" && !isInmune)
         {
+            StartCoroutine(nameof(GainInmunity));
             Distraction distraction = collision.gameObject.GetComponent<Distraction>();
             LoseConcentration(distraction.DistractionMagnitude);
             distraction.DisableConsumable();
@@ -48,6 +54,15 @@ public class BrainChanges : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator GainInmunity()
+    {
+        isInmune = true;
+
+        yield return new WaitForSeconds(inmunityTime);
+
+        isInmune = false;
     }
 
     void GainKnowledge(float knowledgeMagnitude)
