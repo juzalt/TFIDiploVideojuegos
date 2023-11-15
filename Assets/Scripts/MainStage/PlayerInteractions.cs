@@ -36,6 +36,7 @@ public class PlayerInteractions : MonoBehaviour
                 currentPosition = transform.position;
                 rudy.updatePosition = false;
                 destination = hit.point;
+                Debug.Log("hit" + destination);
             }
         }
 
@@ -49,9 +50,10 @@ public class PlayerInteractions : MonoBehaviour
         {
             if (!rudy.updatePosition)
             {
+                Debug.Log("Move");
                 rudy.updatePosition = true;
                 rudy.nextPosition = currentPosition;
-                rudy.ResetPath();
+                //rudy.ResetPath();
                 rudy.destination = destination;    
             }   
         }
