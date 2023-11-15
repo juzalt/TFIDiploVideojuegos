@@ -7,7 +7,14 @@ public class BrainChanges : MonoBehaviour
     [SerializeField] private float initialConcentration = 10f;
     [SerializeField] private float endGameKnowledge = 10f;
     [SerializeField] [Range(1, 2)] private float brainGrowthRate = 1.2f;
+    
+    [Header("Time Inmunity when distracted")]
     [SerializeField] private float inmunityTime = 1f;
+    [SerializeField] private Material blinkingMaterial;
+    [SerializeField] [Range(1, 100)]  private float blinkingRate;
+    private bool isInmune;
+    private SpriteRenderer brainSR;
+    private Material brainMaterial;
 
     [Header("UI")]
     [SerializeField] Slider concentrationSlider;
@@ -15,8 +22,6 @@ public class BrainChanges : MonoBehaviour
 
     private float concentration;
     private float knowledge;
-
-    private bool isInmune;
     
 
     void Start()
@@ -25,7 +30,8 @@ public class BrainChanges : MonoBehaviour
         knowledge = 0;
         UpdateConcentrationUI();
         UpdateKnowledgeUI();
-
+        brainSR = GetComponent<SpriteRenderer>();
+        brainMaterial = brainSR.material;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -59,10 +65,28 @@ public class BrainChanges : MonoBehaviour
     IEnumerator GainInmunity()
     {
         isInmune = true;
+        StartCoroutine(nameof(InmunityBlink));
 
         yield return new WaitForSeconds(inmunityTime);
 
         isInmune = false;
+    }
+
+    IEnumerator InmunityBlink()
+    {
+        float timer = 0;
+        while (timer < inmunityTime)
+        {
+            brainSR.material = blinkingMaterial;
+
+            yield return new WaitForSeconds(inmunityTime / (blinkingRate * 2));
+            
+            brainSR.material = brainMaterial;
+            
+            yield return new WaitForSeconds(inmunityTime / (blinkingRate * 2));
+            
+            timer += inmunityTime / blinkingRate;
+        }
     }
 
     void GainKnowledge(float knowledgeMagnitude)
