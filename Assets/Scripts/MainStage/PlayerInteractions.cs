@@ -12,7 +12,7 @@ public class PlayerInteractions : MonoBehaviour
     void Start()
     {
         rudy = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -34,12 +34,12 @@ public class PlayerInteractions : MonoBehaviour
                 destination = hit.point;
             }
         }
-
-        animator.SetBool("isWalking", rudy.velocity != Vector3.zero);
+        animator.SetFloat("Velocity", Mathf.Clamp01(rudy.velocity.magnitude));
+        //animator.SetBool("isWalking", rudy.velocity != Vector3.zero);
 
         if (Vector3.Distance(transform.position, destination) < 0.1)
         {
-            animator.SetBool("isWalking", false);
+           // animator.SetBool("isWalking", false);
         }
     }
 
