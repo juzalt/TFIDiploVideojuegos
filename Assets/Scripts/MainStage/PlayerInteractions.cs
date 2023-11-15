@@ -34,9 +34,9 @@ public class PlayerInteractions : MonoBehaviour
             {
                 rudy.destination = hit.point;
                 currentPosition = transform.position;
-                rudy.updatePosition = false;
+                if (rudy.velocity == Vector3.zero)
+                    rudy.updatePosition = false;
                 destination = hit.point;
-                Debug.Log("hit" + destination);
             }
         }
 
@@ -50,10 +50,8 @@ public class PlayerInteractions : MonoBehaviour
         {
             if (!rudy.updatePosition)
             {
-                Debug.Log("Move");
                 rudy.updatePosition = true;
                 rudy.nextPosition = currentPosition;
-                //rudy.ResetPath();
                 rudy.destination = destination;    
             }   
         }
