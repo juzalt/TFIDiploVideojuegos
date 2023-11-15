@@ -137,3 +137,5 @@ MonoBehaviour:
   movementSpeedMinMax: {x: 2, y: 7}
   baseDistractionMagnitude: 1
   sizeRange: {x: 0.5, y: 1}
+  goesToPlayer: 1
+  player: {fileID: 6553874742851551685, guid: e6f5c157c7819d64bb155da21765ac2f, type: 3}

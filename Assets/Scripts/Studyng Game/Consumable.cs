@@ -9,7 +9,8 @@ public class Consumable : MonoBehaviour
     protected IObjectPool<Consumable> consumablePool;
     public IObjectPool<Consumable> ConsumablePool { get => consumablePool; set => consumablePool = value; }
 
-    protected Vector3 movementDirection;
+    private Vector3 movementDirection;
+    public Vector3 MovementDirection { get => movementDirection; set => movementDirection = value; }
 
     protected virtual void OnEnable()
     {
@@ -22,7 +23,7 @@ public class Consumable : MonoBehaviour
         movementSpeed = Random.Range(movementSpeedMinMax.x, movementSpeedMinMax.y);
     }
 
-    public void SetInitialPositionAndMovementDirection()
+    public virtual void SetInitialPositionAndMovementDirection()
     {
         int side = Random.Range(0, 4);
 
@@ -50,19 +51,19 @@ public class Consumable : MonoBehaviour
         {
             case 0:
                 spawnPoint = new Vector2(0, spawnPointLooseCoordinate);
-                movementDirection = new Vector3(1, movementLooseDirection, 0);
+                MovementDirection = new Vector3(1, movementLooseDirection, 0);
                 break;
             case 1:
                 spawnPoint = new Vector2(1, spawnPointLooseCoordinate);
-                movementDirection = new Vector3(-1, movementLooseDirection, 0);
+                MovementDirection = new Vector3(-1, movementLooseDirection, 0);
                 break;
             case 2:
                 spawnPoint = new Vector2(spawnPointLooseCoordinate, 0);
-                movementDirection = new Vector3(movementLooseDirection, 1, 0);
+                MovementDirection = new Vector3(movementLooseDirection, 1, 0);
                 break;
             case 3:
                 spawnPoint = new Vector2(spawnPointLooseCoordinate, 1);
-                movementDirection = new Vector3(movementLooseDirection, -1, 0);
+                MovementDirection = new Vector3(movementLooseDirection, -1, 0);
                 break;
         }
 
@@ -83,4 +84,5 @@ public class Consumable : MonoBehaviour
     {
         consumablePool.Release(this);
     }
+
 }

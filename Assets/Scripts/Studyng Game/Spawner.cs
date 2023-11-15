@@ -14,6 +14,10 @@ public class Spawner : MonoBehaviour
     [Tooltip("Only matters if spawningGetsFasterWithTime is true")]
     [SerializeField] private float minSpawningRate;
 
+    [Header("Homing functionality")]
+    [SerializeField] bool goToPlayer;
+    [SerializeField] GameObject player;
+
 
     private float timerForSpawning = 0;
     
@@ -60,6 +64,10 @@ public class Spawner : MonoBehaviour
     private void OnGet(Consumable distraction)
     {
         distraction.gameObject.SetActive(true);
+        if (goToPlayer && player != null)
+        {
+            distraction.MovementDirection = (player.transform.position - distraction.transform.position).normalized;
+        }   
     }
 
     private void OnRelease(Consumable distraction)

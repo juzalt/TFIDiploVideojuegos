@@ -22,7 +22,7 @@ public class Distraction : Consumable
 
     void Move()
     {
-        transform.position += movementSpeed * Time.deltaTime * movementDirection;
+        transform.position += movementSpeed * Time.deltaTime * MovementDirection;
     }
 
     void SetSize()
