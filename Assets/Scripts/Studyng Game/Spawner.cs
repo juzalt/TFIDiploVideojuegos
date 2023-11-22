@@ -18,11 +18,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] bool goToPlayer;
     [SerializeField] GameObject player;
 
+    private bool shouldSpawn = true;
+    public bool ShouldSpawn { get => shouldSpawn; set => shouldSpawn = value; }
 
     private float timerForSpawning = 0;
-    
     private IObjectPool<Consumable> distractionPool;
-    
+
     private void Awake()
     {
         distractionPool = new ObjectPool<Consumable>(
@@ -35,7 +36,8 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        UpdateTimerandSpawnObjects();
+        if (ShouldSpawn)
+            UpdateTimerandSpawnObjects();
     }
 
     private void UpdateTimerandSpawnObjects()
