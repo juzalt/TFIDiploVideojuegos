@@ -91,7 +91,7 @@ public class Spawner : MonoBehaviour
         Destroy(distraction.gameObject);
     }
 
-    private void StopSpawning()
+    private void StopSpawning(bool doesntMatter)
     {
         shouldSpawn = false;
     }
