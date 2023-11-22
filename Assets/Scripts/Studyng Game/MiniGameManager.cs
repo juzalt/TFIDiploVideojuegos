@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -10,7 +9,7 @@ public class MiniGameManager : MonoBehaviour
 
     void Awake()
     {
-        StartCoroutine(nameof(StartGame));
+        StartGame();
     }
 
     
@@ -22,6 +21,11 @@ public class MiniGameManager : MonoBehaviour
     void StartGame()
     {  
         Time.timeScale = 1f;   
+    }
+
+    void EndGame()
+    {
+
     }
 
     IEnumerator CountDown()

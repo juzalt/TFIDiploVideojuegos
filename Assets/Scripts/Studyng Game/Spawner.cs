@@ -16,10 +16,9 @@ public class Spawner : MonoBehaviour
 
     [Header("Homing functionality")]
     [SerializeField] bool goToPlayer;
-    [SerializeField] GameObject player;
+    [SerializeField] BrainChanges player;
 
-    private bool shouldSpawn = true;
-    public bool ShouldSpawn { get => shouldSpawn; set => shouldSpawn = value; }
+    [SerializeField] private bool shouldSpawn = true;
 
     private float timerForSpawning = 0;
     private IObjectPool<Consumable> distractionPool;
@@ -34,9 +33,19 @@ public class Spawner : MonoBehaviour
             maxSize:10);
     }
 
+    void OnEnable()
+    {
+        player.OnFinishGame += StopSpawning;
+    }
+
+    void OnDisble()
+    {
+        player.OnFinishGame -= StopSpawning;
+    }
+
     private void Update()
     {
-        if (ShouldSpawn)
+        if (shouldSpawn)
             UpdateTimerandSpawnObjects();
     }
 
@@ -80,5 +89,10 @@ public class Spawner : MonoBehaviour
     private void OnDestroyConsumable(Consumable distraction)
     {
         Destroy(distraction.gameObject);
+    }
+
+    private void StopSpawning()
+    {
+        shouldSpawn = false;
     }
 }

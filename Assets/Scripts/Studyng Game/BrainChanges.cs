@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,8 @@ public class BrainChanges : MonoBehaviour
 
     private float concentration;
     private float knowledge;
+
+    public event Action OnFinishGame;
     
 
     void Start()
@@ -58,6 +61,8 @@ public class BrainChanges : MonoBehaviour
 
         if (concentration <= 0)
         {
+            if (OnFinishGame != null)
+                OnFinishGame();
             Destroy(gameObject);
         }
     }
@@ -96,6 +101,8 @@ public class BrainChanges : MonoBehaviour
         UpdateKnowledgeUI();
         if (knowledge >= endGameKnowledge)
         {
+            if (OnFinishGame != null)
+                OnFinishGame();
             Debug.Log("You are ready for the test");
         }
     }
