@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] [Range(0,10)] int secondsToStart = 3;
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] TextMeshProUGUI endGameText;
+    [SerializeField] GameObject endGamePanel;
 
     void Awake()
     {
@@ -32,14 +34,25 @@ public class MiniGameManager : MonoBehaviour
 
     void EndGame(bool win)
     {
+        endGamePanel.SetActive(true);
         if (win)
         {
-            endGameText.text = "You Are Ready for The Test";
+            endGameText.text = "Muy bien! \n Ya estudiaste para el examen \n ¿Querés seguir estudiando?";
         }
         else
         {
-            endGameText.text = "You Lost Your Concentration";
+            endGameText.text = "Perdiste la concentración \n ¿Querés seguir estudiando?";
         }
+    }
+
+    public void ContinueStudying()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GoBackTotMainScene()
+    {
+        SceneManager.LoadScene(0);
     }
 
     IEnumerator CountDown()
