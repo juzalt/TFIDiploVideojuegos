@@ -54,19 +54,6 @@ public class BrainChanges : MonoBehaviour
         }
     }
 
-    void LoseConcentration(float distractionMagnitude)
-    {
-        concentration -= distractionMagnitude;
-        UpdateConcentrationUI();
-
-        if (concentration <= 0)
-        {
-            if (OnFinishGame != null)
-                OnFinishGame(false);
-            Destroy(gameObject);
-        }
-    }
-
     IEnumerator GainInmunity()
     {
         isInmune = true;
@@ -94,6 +81,19 @@ public class BrainChanges : MonoBehaviour
         }
     }
 
+    void LoseConcentration(float distractionMagnitude)
+    {
+        concentration -= distractionMagnitude;
+        UpdateConcentrationUI();
+
+        if (concentration <= 0)
+        {
+            if (OnFinishGame != null)
+                OnFinishGame(false);
+            Destroy(gameObject);
+        }
+    }
+
     void GainKnowledge(float knowledgeMagnitude)
     {
         knowledge += knowledgeMagnitude;
@@ -103,7 +103,7 @@ public class BrainChanges : MonoBehaviour
         {
             if (OnFinishGame != null)
                 OnFinishGame(true);
-            Debug.Log("You are ready for the test");
+            Destroy(gameObject);
         }
     }
 

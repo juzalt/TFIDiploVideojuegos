@@ -4,28 +4,42 @@ using TMPro;
 
 public class MiniGameManager : MonoBehaviour
 {
+    [SerializeField] BrainChanges player;
     [SerializeField] [Range(0,10)] int secondsToStart = 3;
     [SerializeField] TextMeshProUGUI countdownText;
+    [SerializeField] TextMeshProUGUI endGameText;
 
     void Awake()
     {
-        StartGame();
+        
     }
 
-    
+    void OnEnable()
+    {
+        player.OnFinishGame += EndGame;
+    }
+
+    void OnDisable()
+    {
+        player.OnFinishGame -= EndGame;
+    }
+
     void Update()
     {
         
     }
 
-    void StartGame()
-    {  
-        Time.timeScale = 1f;   
-    }
 
-    void EndGame()
+    void EndGame(bool win)
     {
-
+        if (win)
+        {
+            endGameText.text = "You Are Ready for The Test";
+        }
+        else
+        {
+            endGameText.text = "You Lost Your Concentration";
+        }
     }
 
     IEnumerator CountDown()
