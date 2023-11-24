@@ -1,8 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScene : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
+
     public void MoveToScene(int sceneID)
     {
         SceneManager.LoadScene(sceneID);

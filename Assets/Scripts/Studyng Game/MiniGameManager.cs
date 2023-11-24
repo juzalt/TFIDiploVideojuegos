@@ -11,10 +11,6 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI endGameText;
     [SerializeField] GameObject endGamePanel;
 
-    void Awake()
-    {
-        
-    }
 
     void OnEnable()
     {
@@ -25,12 +21,6 @@ public class MiniGameManager : MonoBehaviour
     {
         player.OnFinishGame -= EndGame;
     }
-
-    void Update()
-    {
-        
-    }
-
 
     void EndGame(bool win)
     {
@@ -50,9 +40,9 @@ public class MiniGameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void GoBackTotMainScene()
+    public void GoBackTotMainScene(int sceneID)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(sceneID);
     }
 
     IEnumerator CountDown()
