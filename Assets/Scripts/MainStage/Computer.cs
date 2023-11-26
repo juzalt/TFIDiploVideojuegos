@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class Computer : Interactable
 {
+
+    public GameObject computerPopup;
     public override void Interact()
     {
-        Debug.Log("Using computer");
+        computerPopup.SetActive(true);
     }
 
 }
