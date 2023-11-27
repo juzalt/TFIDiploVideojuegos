@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class PlayerInteractions : MonoBehaviour
 {
     [SerializeField] LayerMask interactionLayer = default;
+    [SerializeField] GameObject playerModel;
     private Interactable currentInteractable;
     NavMeshAgent rudy;
     private Animator animator;
@@ -22,6 +23,7 @@ public class PlayerInteractions : MonoBehaviour
         ShowMouseHover();
         InteractWithObjects();
         Move();
+        AdjustPlayerYPosition();
     }
 
     private void Move()
@@ -40,6 +42,31 @@ public class PlayerInteractions : MonoBehaviour
             }
         }
 
+        Turn();
+
+        animator.SetFloat("Velocity", Mathf.Clamp01(rudy.velocity.magnitude));
+    }
+
+    public void MoveToPosition(Vector3 position)
+    {
+        rudy.destination = position;
+        currentPosition = transform.position;
+        if (rudy.velocity == Vector3.zero)
+            rudy.updatePosition = false;
+        destination = position;
+
+        Turn();
+
+        animator.SetFloat("Velocity", Mathf.Clamp01(rudy.velocity.magnitude));
+    }
+
+    private void AdjustPlayerYPosition()
+    {
+        playerModel.transform.position = new Vector3(playerModel.transform.position.x, 0, playerModel.transform.position.z);
+    }
+
+    private void Turn()
+    {
         var turnAngle = Vector3.Angle(transform.forward, destination - transform.position);
         if (turnAngle >= 30)
         {
@@ -52,17 +79,9 @@ public class PlayerInteractions : MonoBehaviour
             {
                 rudy.updatePosition = true;
                 rudy.nextPosition = currentPosition;
-                rudy.destination = destination;    
-            }   
+                rudy.destination = destination;
+            }
         }
-
-        animator.SetFloat("Velocity", Mathf.Clamp01(rudy.velocity.magnitude));
-        //animator.SetBool("isWalking", rudy.velocity != Vector3.zero);
-
-        //if (Vector3.Distance(transform.position, destination) < 0.1)
-        //{
-           // animator.SetBool("isWalking", false);
-        //}
     }
 
     private void InteractWithObjects()

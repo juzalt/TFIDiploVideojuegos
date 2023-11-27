@@ -4,19 +4,27 @@ using UnityEngine;
 public class RoomChanger : MonoBehaviour
 {
 
+    [Header("Camera Parameters")]
     [SerializeField] float rotationSmoothness = 5.0f;
     [SerializeField] Vector3 roomEulerRotation;
     [SerializeField] Vector3 livingEulerRotation;
+
+    [Header("Player Parameters")]
+    [SerializeField] PlayerInteractions player;
+    [SerializeField] Vector3 roomPosition;
+    [SerializeField] Vector3 livingPosition;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
             StartCoroutine(nameof(ChangeCameraPosition), livingEulerRotation);
+            player.MoveToPosition(livingPosition);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             StartCoroutine(nameof(ChangeCameraPosition), roomEulerRotation);
+            player.MoveToPosition(roomPosition);
         }
     }
 
@@ -34,4 +42,5 @@ public class RoomChanger : MonoBehaviour
         }
         Debug.Log("end");    
     }
+
 }
