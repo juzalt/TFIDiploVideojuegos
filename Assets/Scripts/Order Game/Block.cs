@@ -28,7 +28,7 @@ public class Block : MonoBehaviour
 
     public void MergeBlock(Block blockToMergeWith)
     {
-        // Decide cu[al es el bloque con el que estamos mergeando
+        // Decide cuál es el bloque con el que estamos mergeando
         MergingBlock = blockToMergeWith;
 
         // Libera el nodo actual
@@ -40,6 +40,7 @@ public class Block : MonoBehaviour
          * mas de una vez, para el caso donde hay mas de un merge posible.         * 
          */
         blockToMergeWith.Merging = true;
+        // blockToMergeWith deberia ser el punto de partida para la animacion
     }
 
     public bool CanMerge(int value) => value == Value && !Merging && MergingBlock == null;
