@@ -739,7 +739,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1289999486}
         m_TargetAssemblyTypeName: RoomChanger, Assembly-CSharp
-        m_MethodName: GoToLiving
+        m_MethodName: GoToBedroom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
