@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomChanger : MonoBehaviour
 {
@@ -14,19 +15,10 @@ public class RoomChanger : MonoBehaviour
     [SerializeField] Vector3 roomPosition;
     [SerializeField] Vector3 livingPosition;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartCoroutine(nameof(ChangeCameraPosition), livingEulerRotation);
-            player.MoveToPosition(livingPosition);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            StartCoroutine(nameof(ChangeCameraPosition), roomEulerRotation);
-            player.MoveToPosition(roomPosition);
-        }
-    }
+    [Header("UI components")]
+    [SerializeField] Button goToLivingUI;
+    [SerializeField] Button goToBedroomUI;
+
 
     IEnumerator ChangeCameraPosition(Vector3 eulerRotation)
     {
@@ -35,12 +27,26 @@ public class RoomChanger : MonoBehaviour
         while (timer < 1)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, target, timer * rotationSmoothness);
-            Debug.Log(transform.rotation);
-            yield return new WaitForSeconds(Time.deltaTime);
-            Debug.Log(timer);
+            yield return new WaitForSeconds(Time.deltaTime);  
             timer += Time.deltaTime;
         }
-        Debug.Log("end");    
+           
+    }
+
+    public void GoToLiving()
+    {
+        StartCoroutine(nameof(ChangeCameraPosition), livingEulerRotation);
+        player.MoveToPosition(livingPosition);
+        goToLivingUI.gameObject.SetActive(false);
+        goToBedroomUI.gameObject.SetActive(true);
+    }
+
+    public void GoToBedroom()
+    {
+        StartCoroutine(nameof(ChangeCameraPosition), roomEulerRotation);
+        player.MoveToPosition(roomPosition);
+        goToLivingUI.gameObject.SetActive(true);
+        goToBedroomUI.gameObject.SetActive(false);
     }
 
 }
