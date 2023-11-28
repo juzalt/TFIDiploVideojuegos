@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,8 +18,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<BlockType> _types;
     [SerializeField] private float _travelTime = 0.2f;
     [SerializeField] private int _winCondition = 2048; // Podemos cambiar este numero a cualquier multiplo de 2 segun que tan largo queremos que sea el juego.
+    [SerializeField] GameObject endGamePanel;
+    [SerializeField] TextMeshProUGUI endGameText;
 
-    [SerializeField] private GameObject _winScreen, _loseScreen;
+    //[SerializeField] private GameObject _winScreen, _loseScreen, _background;
 
     private GameState _state;
     private int _round;
@@ -60,13 +63,30 @@ public class GameManager : MonoBehaviour
             case GameState.Moving:
                 break;
             case GameState.Win:
-                _winScreen.SetActive(true);
+                //_winScreen.SetActive(true);
+                //_background.SetActive(true);
+                EndGame(true);
                 break;
             case GameState.Lose:
-                _loseScreen.SetActive(true);
+                //_loseScreen.SetActive(true);
+                //_background.SetActive(true);
+                EndGame(false);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+        }
+    }
+
+    void EndGame(bool win)
+    {
+        endGamePanel.SetActive(true);
+        if (win)
+        {
+            endGameText.text = "¡Acomodaste todo! \r \n ¿Quieres repetirlo?";
+        }
+        else
+        {
+            endGameText.text = "¿Quieres volver a intentar?";
         }
     }
 
