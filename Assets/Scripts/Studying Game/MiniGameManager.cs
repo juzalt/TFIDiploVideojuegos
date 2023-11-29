@@ -38,11 +38,13 @@ public class MiniGameManager : MonoBehaviour
     public void ContinueStudying()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickYes);
     }
 
     public void GoBackTotMainScene(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickNo);
     }
 
     IEnumerator CountDown()

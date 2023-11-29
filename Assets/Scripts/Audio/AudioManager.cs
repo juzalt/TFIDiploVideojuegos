@@ -9,6 +9,13 @@ using UnityEngine;
 
     public static AudioManager Instance { get => instance; }
 
+    public enum Sound
+    {
+        UIClick,
+        UIClickYes,
+        UIClickNo
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -27,8 +34,22 @@ using UnityEngine;
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayUIClickSound()
+    public void PlaySound(Sound sound)
     {
-        audioSource.PlayOneShot(AudioAssets.Instance.UIClick);
+        audioSource.PlayOneShot(GetAudioClip(sound));
+    }
+
+    private AudioClip GetAudioClip(Sound sound)
+    {
+        foreach(AudioAssets.SoundAudioClip soundAudioClip in AudioAssets.Instance.sounds)
+        {
+            if (soundAudioClip.sound == sound)
+            {
+                return soundAudioClip.audioClip;
+            }
+        }
+        Debug.LogError("The sound " + sound + "Doesn't exist.");
+
+        return null;
     }
 }

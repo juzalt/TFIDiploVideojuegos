@@ -44,4 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0d2e628d1e14f4d95f2438ba88e458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIClick: {fileID: 8300000, guid: 578b57d6865898e4f938f536c8a1d1b3, type: 3}
+  sounds:
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: 578b57d6865898e4f938f536c8a1d1b3, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: b47c9b7070c28104298e2a21481b8ef0, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: 15487e9ebb3ec274fa9f8814b26ebc13, type: 3}

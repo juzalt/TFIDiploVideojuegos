@@ -15,5 +15,12 @@ public class AudioAssets : MonoBehaviour
         }
     }
 
-    public AudioClip UIClick;
+    [SerializeField] public SoundAudioClip[] sounds;
+
+    [System.Serializable]
+    public class SoundAudioClip
+    {
+        public AudioManager.Sound sound;
+        public AudioClip audioClip;
+    }
 }

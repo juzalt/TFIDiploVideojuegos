@@ -5,14 +5,14 @@ public class MainMenuManager : MonoBehaviour
 {
     public void QuitGame()
     {
-        AudioManager.Instance.PlayUIClickSound();
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);
         Debug.Log("Quit");
         Application.Quit();
     }
 
     public void MoveToScene(int sceneID)
     {
-        AudioManager.Instance.PlayUIClickSound();
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);
         SceneManager.LoadScene(sceneID);
     }
 }
