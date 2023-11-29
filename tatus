@@ -1,0 +1,84 @@
+[33m5a5ca09[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m ciudad de fondo
+[33m736ea80[m[33m ([m[1;31morigin/main[m[33m)[m fdsljghfbjsdlhfjlsd
+[33m0f60a70[m popups previos a minijuegos, sin pared translucida
+[33md51d5e2[m[33m ([m[1;31morigin/feature/pared-traslucida[m[33m, [m[1;32mfeature/pared-traslucida[m[33m)[m popups previos a minijuegos
+[33mf356cc5[m[33m ([m[1;31morigin/Mateo[m[33m)[m Added more UI sounds and AudioAssets class implementation
+[33mf5bc2e5[m Started with audio implementation
+[33m615cad4[m no se xD
+[33me3fec0e[m usar prefab para endgame screen
+[33m08f7b55[m UI prefab
+[33m057f9d1[m Added Study interaction in Main Scene
+[33m8ed845e[m Go to Bedroom functionality
+[33m58783b9[m Added UI buttons for changing rooms
+[33m55223f4[m Added collision objects for nav mesh angent in the living
+[33mf8622a0[m Merge branch 'Mateo'
+[33mc38ab3d[m Added living, windows and more furniture
+[33m8933e4f[m Styling endgame popup order minigame
+[33mea37460[m Added player movement to Room changer
+[33m980d075[m Added room changer script for changing rooms
+[33m81206bd[m WIP final diferente juego de ordenar
+[33mbccf688[m Rudy can now use the computer to study
+[33mdb49f09[m Fixed Scenes indexes
+[33m68ed62a[m Basic Main Menu Functionality
+[33ma7f7707[m Created Main Menu with Simple UI
+[33m54c2f7b[m Added skybox package
+[33m3675c9b[m Changed some lighting settings
+[33m9f0fc55[m Added functionality to win/lose Menu
+[33mf3eb29c[m Started with UI for ending game
+[33mf0f0215[m Added parameter to action so that it can know when player wins or lose
+[33m63a46de[m Stop Spawners when winning or losing
+[33m02b68b5[m Merge branch 'main' of https://github.com/juzalt/TFIDiploVideojuegos
+[33mdbfe8e5[m Small change in asset of bedroom
+[33m07c9122[m Started with studing minigame manager
+[33m2797ef8[m[33m ([m[1;31morigin/popup-cambio-escena[m[33m, [m[1;32mpopup-cambio-escena[m[33m)[m Se puede cambiar de escena
+[33m4487096[m Popup con dos opciones. Funciona la de cerrar. Se activa al tocar en cama
+[33m9dc78cf[m Changed some gameplay parameters in studyng game
+[33m4248dd8[m Added Homing distractions
+[33mea8272a[m Added blinking when brain is Inmune
+[33me961852[m Added inmunity for a period of time when hit by distraction
+[33m535a10e[m Movement adjustments
+[33m271a778[m Solved movement bug
+[33m796a1d0[m Added rotation animation (needs some adjustments)
+[33mf02c99c[m Added blend tree for movement animations
+[33ma3cfc1e[m Added furniture in the bedroom
+[33m08c3985[m Added bed, idle and walking animations
+[33me490693[m Brain now get larger when adquiring knowledge
+[33m0b5c4b0[m Changed Knowledge initial direction movement
+[33m51d6e96[m Improved distraction movement and added change of size on each spawn
+[33m56367c2[m Small UI changes
+[33mf369dc7[m Added UI For Knowledge and distractions
+[33mfece39a[m Added spawning time
+[33m074a8e1[m Added Brain Changes script for consumables instead of having two scripts
+[33m0cd2c09[m Adjusted Consumable class  and added Knowledge prefab
+[33mbc96d5d[m Added Consumable class so thah Distractions and Knowledge an inherit from it
+[33m3509f38[m Spawn distraction from diferent direction and positions
+[33m2ec9d5a[m Added Max size to Object Pool
+[33m6fd2dfd[m Added Object Pool
+[33mfbdf2a5[m Made simple spawner
+[33m8d6507a[m Added Distraction "Damage"
+[33m659ef8d[m Arranged Limits position and added distractions prefab
+[33m0669a16[m Added Screen Limites in Studyng game
+[33m4306c4d[m Implemented Brain Movement
+[33mdc210a9[m Created new scene for studyng game
+[33m87f3a18[m Erased Pro builder package
+[33m48eb2eb[m Files reordering
+[33mb99f68d[m Merge branch 'Mateo'
+[33m1873ed5[m Rudy Model and Animation (needs changes)
+[33m9b6e440[m minijuego 2048 terminado
+[33m61a9b1a[m Los bloques se mueven para cualquier direccion :)
+[33mbf8b313[m Completado el switcheo de escenas y el spawn de bloques, en el gamemanger
+[33m210a0ea[m Se spawnean bloques aleatoreamente, con numeros.
+[33m1f6098b[m Se generan los nodos
+[33m509321b[m[33m ([m[1;31morigin/Minijuego-Acomodar[m[33m, [m[1;32mMinijuego-Acomodar[m[33m)[m Se puede mover el cuadrado
+[33md080f80[m Imagen de platos sucios. Script de DragAndDrop. Falta que el script encuentre al componente
+[33ma22c354[m Creé la escena en 2D. Instalé el feature 2D. Creé dos cuadrados.
+[33md7bed0a[m Small change
+[33m5564d1e[m Added first glow when mouse hovers
+[33m83eadda[m Solved movement animation bug
+[33mfe161b2[m[33m ([m[1;31morigin/animation[m[33m, [m[1;32manimation[m[33m)[m Idle and walking animations
+[33me47948b[m[33m ([m[1;31morigin/Movimiento-teclado-y-pointAndClick[m[33m, [m[1;32mMovimiento-teclado-y-pointAndClick[m[33m)[m Rudy se mueve con point and click
+[33m10c8708[m Sin terminar: movimiento point and click. Instalar AI Navigation Package
+[33me0fc938[m[33m ([m[1;32mMateo[m[33m)[m Added Mouse hovering over interactables functionality
+[33m5487f3f[m Implemented Interactable objects
+[33m31a6b59[m[33m ([m[1;31morigin/Original-Path-Pinding[m[33m)[m Created unity project
+[33m29f5c69[m primer commit
