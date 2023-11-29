@@ -11,9 +11,13 @@ using UnityEngine;
 
     public enum Sound
     {
+        GainWisdomSG,
+        LoseConcentrationSG,
         UIClick,
         UIClickYes,
-        UIClickNo
+        UIClickNo,
+        WinMiniGame,
+        LoseMiniGame
     }
 
     private void Awake()
