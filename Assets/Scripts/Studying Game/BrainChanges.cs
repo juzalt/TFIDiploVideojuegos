@@ -85,12 +85,16 @@ public class BrainChanges : MonoBehaviour
     {
         concentration -= distractionMagnitude;
         UpdateConcentrationUI();
-
         if (concentration <= 0)
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.LoseMiniGame);
             if (OnFinishGame != null)
                 OnFinishGame(false);
             Destroy(gameObject);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.LoseConcentrationSG);
         }
     }
 
@@ -101,9 +105,14 @@ public class BrainChanges : MonoBehaviour
         UpdateKnowledgeUI();
         if (knowledge >= endGameKnowledge)
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.WinMiniGame);
             if (OnFinishGame != null)
                 OnFinishGame(true);
             Destroy(gameObject);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.GainWisdomSG);
         }
     }
 
