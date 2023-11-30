@@ -3,7 +3,10 @@ using UnityEngine.AI;
 
 public class PlayerInteractions : MonoBehaviour
 {
+    [Header("Layer Mask Settings")]
     [SerializeField] LayerMask interactionLayer = default;
+    [SerializeField] LayerMask environmentLayer = default;
+
     [SerializeField] GameObject playerModel;
     private Interactable currentInteractable;
     NavMeshAgent rudy;
@@ -96,6 +99,7 @@ public class PlayerInteractions : MonoBehaviour
                 currentInteractable = hit.collider.GetComponent<Interactable>();
                 if (currentInteractable != null)
                 {
+                    AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);
                     currentInteractable.Interact();
                 }
             }

@@ -436,10 +436,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 511275312}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1910178222}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: StayInMainScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1314,6 +1314,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0fec29f330ff040bba6555bebc7aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGameSceneIndex: 3
+  uiPopUp:
+    popUp: {fileID: 511275312}
+    YesBTN: {fileID: 1509662105}
+    titleText: {fileID: 446749492}
+    yesBtnText: {fileID: 1860792644}
+    noBtnText: {fileID: 1703430586}
+    helpTitle: "Deber\xEDa acomodar todo esto, parece una monta\xF1a\u2026. que divertidas
+      las monta\xF1as rusas \xBFY si mejor voy al parque de diversiones?"
+    yesText: "\xA1Acomodemos!"
+    noText: No acomodar
   bedPopup: {fileID: 511275312}
 --- !u!1 &253004103
 GameObject:
@@ -2079,6 +2090,9 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 64
+  environmentLayer:
+    serializedVersion: 2
+    m_Bits: 1
   playerModel: {fileID: 1382106788}
 --- !u!4 &465590471
 Transform:
@@ -3724,10 +3738,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1289238331}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1910178222}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: StayInMainScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3874,7 +3888,6 @@ Transform:
   m_Children:
   - {fileID: 1536270505}
   - {fileID: 1896663757}
-  - {fileID: 2144586126}
   - {fileID: 873681707}
   - {fileID: 900562285}
   - {fileID: 452915415}
@@ -3904,7 +3917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1222458868
 Transform:
   m_ObjectHideFlags: 0
@@ -3926,6 +3939,8 @@ Transform:
   - {fileID: 1627820028}
   - {fileID: 675426278}
   - {fileID: 253004104}
+  - {fileID: 2144586126}
+  - {fileID: 1598439475}
   m_Father: {fileID: 1119615774}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255660080
@@ -4760,6 +4775,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504580155}
   m_CullTransparentMesh: 1
+--- !u!1001 &1507954894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 296247117713650072, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6059478732125204058, guid: 7a7166671f6e35f4e95ce8ec8228ce71,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a7166671f6e35f4e95ce8ec8228ce71, type: 3}
 --- !u!1 &1509662103
 GameObject:
   m_ObjectHideFlags: 0
@@ -5281,6 +5364,112 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573582702}
   m_CullTransparentMesh: 1
+--- !u!1 &1598439474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598439475}
+  - component: {fileID: 1598439478}
+  - component: {fileID: 1598439477}
+  - component: {fileID: 1598439476}
+  m_Layer: 0
+  m_Name: Wall2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1598439475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598439474}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 9.68, y: 3.55, z: 10}
+  m_LocalScale: {x: 3, y: 3, z: 6.096544}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1222458868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!64 &1598439476
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598439474}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1598439477
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598439474}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: f7f7d5cc8214aa7498e3e709bcd52649, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1598439478
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598439474}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1599712365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6175,7 +6364,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde4c47ec2334474189a9f4d7bfc6da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  computerPopup: {fileID: 1289238331}
+  miniGameSceneIndex: 2
+  uiPopUp:
+    popUp: {fileID: 511275312}
+    YesBTN: {fileID: 1509662105}
+    titleText: {fileID: 446749492}
+    yesBtnText: {fileID: 1860792644}
+    noBtnText: {fileID: 1703430586}
+    helpTitle: "Deber\xEDa probar mi juego del cerebro que esquiva distracciones.
+      Pero quiero ir al balc\xF3n y ver la ciudad..."
+    yesText: Probar Juego
+    noText: No jugar
 --- !u!1 &1957319345
 GameObject:
   m_ObjectHideFlags: 0
@@ -6584,7 +6783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2144586126
 Transform:
   m_ObjectHideFlags: 0
@@ -6595,10 +6794,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -20.1, y: 3.55, z: 10}
-  m_LocalScale: {x: 3, y: 3, z: 1.6078231}
+  m_LocalScale: {x: 3, y: 3, z: 6.096544}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1119615774}
+  m_Father: {fileID: 1222458868}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
 --- !u!64 &2144586127
 MeshCollider:
@@ -6684,3 +6883,4 @@ SceneRoots:
   - {fileID: 465590471}
   - {fileID: 449791228}
   - {fileID: 33714353}
+  - {fileID: 1507954894}

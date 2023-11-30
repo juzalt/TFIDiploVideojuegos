@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public abstract class Interactable : MonoBehaviour
 {
+    [SerializeField] int miniGameSceneIndex;
+    [SerializeField] UIPopUp uiPopUp;
+
     Color glowColor = new(0.4f, 0.4f, 0.4f);
     float glowfactor = 1.3f;
     MeshRenderer meshRenderer;
@@ -12,7 +18,27 @@ public abstract class Interactable : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    public abstract void Interact();
+    public void Interact()
+    {
+        uiPopUp.popUp.SetActive(true);
+        uiPopUp.YesBTN.onClick.AddListener(PlayMiniGame);
+        uiPopUp.titleText.text = uiPopUp.helpTitle;
+        uiPopUp.yesBtnText.text = uiPopUp.yesText;
+        uiPopUp.noBtnText.text = uiPopUp.noText;
+    }
+
+    public void PlayMiniGame()
+    {
+        SceneManager.LoadScene(miniGameSceneIndex);
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickYes);
+    }
+
+    public void StayInMainScene()
+    {
+        uiPopUp.popUp.SetActive(false);
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickNo);
+    }
+
 
     public void OnMouseHover()
     {
@@ -25,4 +51,15 @@ public abstract class Interactable : MonoBehaviour
         Debug.Log("Mouse off the object");
         meshRenderer.materials[1].SetColor("_EmissionColor", Color.black);
     }
+
+    [System.Serializable]
+    public class UIPopUp
+    {
+        public GameObject popUp;
+        public Button YesBTN;
+        public TextMeshProUGUI titleText, yesBtnText, noBtnText;
+        public string helpTitle, yesText, noText;
+    }
+
+    
 }
