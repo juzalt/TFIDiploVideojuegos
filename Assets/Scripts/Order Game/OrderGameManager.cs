@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     private List<Node> _nodes;
     private List<Block> _blocks;
 
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
 
     private BlockType GetBlockTypeByValue(int value) => _types.First(t=> t.Value == value);
 
@@ -143,30 +143,29 @@ public class GameManager : MonoBehaviour
         var block = Instantiate(_blockPrefab, node.Pos, Quaternion.identity);
         block.Init(GetBlockTypeByValue(value));
         block.SetBlock(node);
-        spriteRenderer = block.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.white;
+        _spriteRenderer = block.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        _spriteRenderer.color = Color.white;
 
         block.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
-        //spriteRenderer.size = block.transform.position;
         switch (value)
         {
             case 2:
-                spriteRenderer.sprite = imgForValue2;
+                _spriteRenderer.sprite = imgForValue2;
                 break;
             case 4:
-                spriteRenderer.sprite = imgForValue4;
+                _spriteRenderer.sprite = imgForValue4;
                 break;
             case 8:
-                spriteRenderer.sprite = imgForValue8;
+                _spriteRenderer.sprite = imgForValue8;
                 break;
             case 16:
-                spriteRenderer.sprite = imgForValue16;
+                _spriteRenderer.sprite = imgForValue16;
                 break;
             case 32:
-                spriteRenderer.sprite = imgForValue32;
+                _spriteRenderer.sprite = imgForValue32;
                 break;
             case 64:
-                spriteRenderer.sprite = imgForValue64;
+                _spriteRenderer.sprite = imgForValue64;
                 break;
             default:
                 throw new ArgumentOutOfRangeException("error", value, null);

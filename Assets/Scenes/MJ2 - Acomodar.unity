@@ -1007,8 +1007,7 @@ MonoBehaviour:
   imgForValue8: {fileID: 21300000, guid: 3a96690c67048604c89cd35aaaca385c, type: 3}
   imgForValue16: {fileID: 21300000, guid: b82efc210c6d210498497164d2094b7f, type: 3}
   imgForValue32: {fileID: 21300000, guid: 1d3941e8e65745a42a310e612712dfa7, type: 3}
-  imgForValue64: {fileID: 21300000, guid: a163ca176c42b7f4db5247564329c54b, type: 3}
-  spriteRenderer: {fileID: 0}
+  imgForValue64: {fileID: 21300000, guid: c5821b406278aba49ad76dfdf1e002c1, type: 3}
 --- !u!4 &621755915
 Transform:
   m_ObjectHideFlags: 0
