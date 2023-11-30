@@ -82,10 +82,12 @@ public class GameManager : MonoBehaviour
         endGamePanel.SetActive(true);
         if (win)
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.WinMiniGame);
             endGameText.text = "¡Acomodaste todo! \r \n ¿Quieres repetirlo?";
         }
         else
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sound.LoseMiniGame);
             endGameText.text = "¿Quieres volver a intentar?";
         }
     }
