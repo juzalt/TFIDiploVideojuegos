@@ -8,12 +8,15 @@ public class PlayerInteractions : MonoBehaviour
     [SerializeField] LayerMask environmentLayer = default;
 
     [SerializeField] GameObject playerModel;
+
     private Interactable currentInteractable;
     NavMeshAgent rudy;
     private Animator animator;
     private Vector3 destination;
     private Vector3 currentPosition;
-    
+    private bool canMove;
+
+    public bool CanMove { get => canMove; set => canMove = value; }
 
     void Start()
     {
@@ -31,7 +34,7 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canMove)
         {
             RaycastHit hit;
 
