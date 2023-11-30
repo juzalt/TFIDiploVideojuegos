@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
-  m_Color: {r: 0.9150943, g: 0.06474723, b: 0.06474723, a: 1}
+  m_Color: {r: 0.90588236, g: 0.3882353, b: 0.24313726, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,5 +137,3 @@ MonoBehaviour:
   movementSpeedMinMax: {x: 2, y: 7}
   baseDistractionMagnitude: 1
   sizeRange: {x: 0.5, y: 1}
-  goesToPlayer: 1
-  player: {fileID: 6553874742851551685, guid: e6f5c157c7819d64bb155da21765ac2f, type: 3}
