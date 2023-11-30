@@ -1325,7 +1325,7 @@ MonoBehaviour:
       las monta\xF1as rusas \xBFY si mejor voy al parque de diversiones?"
     yesText: "\xA1Acomodemos!"
     noText: No acomodar
-  bedPopup: {fileID: 511275312}
+  player: {fileID: 465590469}
 --- !u!1 &253004103
 GameObject:
   m_ObjectHideFlags: 0
@@ -4926,19 +4926,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1509662106}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1509662108}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: MoveToScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1509662106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6375,6 +6363,7 @@ MonoBehaviour:
       Pero quiero ir al balc\xF3n y ver la ciudad..."
     yesText: Probar Juego
     noText: No jugar
+  player: {fileID: 465590469}
 --- !u!1 &1957319345
 GameObject:
   m_ObjectHideFlags: 0

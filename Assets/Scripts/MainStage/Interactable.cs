@@ -3,10 +3,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public abstract class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
     [SerializeField] int miniGameSceneIndex;
     [SerializeField] UIPopUp uiPopUp;
+    [SerializeField] PlayerInteractions player;
 
     Color glowColor = new(0.4f, 0.4f, 0.4f);
     float glowfactor = 1.3f;
@@ -21,6 +22,7 @@ public abstract class Interactable : MonoBehaviour
     public void Interact()
     {
         uiPopUp.popUp.SetActive(true);
+        player.CanMove = false;
         uiPopUp.YesBTN.onClick.AddListener(PlayMiniGame);
         uiPopUp.titleText.text = uiPopUp.helpTitle;
         uiPopUp.yesBtnText.text = uiPopUp.yesText;
@@ -36,6 +38,7 @@ public abstract class Interactable : MonoBehaviour
     public void StayInMainScene()
     {
         uiPopUp.popUp.SetActive(false);
+        player.CanMove = true;
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickNo);
     }
 
