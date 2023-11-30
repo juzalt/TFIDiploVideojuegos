@@ -17,7 +17,8 @@ using UnityEngine;
         UIClickYes,
         UIClickNo,
         WinMiniGame,
-        LoseMiniGame
+        LoseMiniGame,
+        MoveClothOG
     }
 
     private void Awake()

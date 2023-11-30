@@ -175,6 +175,7 @@ public class GameManager : MonoBehaviour
 
     void Shift(Vector2 dir)
     {
+        AudioManager.Instance.PlaySound(AudioManager.Sound.MoveClothOG);
         ChangeState(GameState.Moving);
 
         var orderedBlocks = _blocks.OrderBy(b => b.Pos.x).ThenBy(b => b.Pos.y).ToList();
@@ -197,6 +198,7 @@ public class GameManager : MonoBehaviour
                     if (possibleNode.OccupiedBlock !=  null && possibleNode.OccupiedBlock.CanMerge(block.Value))
                     {
                         block.MergeBlock(possibleNode.OccupiedBlock);
+                        AudioManager.Instance.PlaySound(AudioManager.Sound.GainWisdomSG);
                     } 
                     // Si no es posible, el bloque se mueve de nodo
                     else if (possibleNode.OccupiedBlock == null) next = possibleNode;
