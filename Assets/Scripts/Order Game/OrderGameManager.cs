@@ -6,6 +6,9 @@ using Random = UnityEngine.Random;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem.LowLevel;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,14 +23,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _winCondition = 2048; // Podemos cambiar este numero a cualquier multiplo de 2 segun que tan largo queremos que sea el juego.
     [SerializeField] GameObject endGamePanel;
     [SerializeField] TextMeshProUGUI endGameText;
-
-    //[SerializeField] private GameObject _winScreen, _loseScreen, _background;
+    [SerializeField] Sprite imgForValue2;
+    [SerializeField] Sprite imgForValue4;
+    [SerializeField] Sprite imgForValue8;
+    [SerializeField] Sprite imgForValue16;
+    [SerializeField] Sprite imgForValue32;
+    [SerializeField] Sprite imgForValue64;
 
     private GameState _state;
     private int _round;
 
     private List<Node> _nodes;
     private List<Block> _blocks;
+
+    public SpriteRenderer spriteRenderer;
 
     private BlockType GetBlockTypeByValue(int value) => _types.First(t=> t.Value == value);
 
@@ -63,13 +72,9 @@ public class GameManager : MonoBehaviour
             case GameState.Moving:
                 break;
             case GameState.Win:
-                //_winScreen.SetActive(true);
-                //_background.SetActive(true);
                 EndGame(true);
                 break;
             case GameState.Lose:
-                //_loseScreen.SetActive(true);
-                //_background.SetActive(true);
                 EndGame(false);
                 break;
             default:
@@ -138,6 +143,34 @@ public class GameManager : MonoBehaviour
         var block = Instantiate(_blockPrefab, node.Pos, Quaternion.identity);
         block.Init(GetBlockTypeByValue(value));
         block.SetBlock(node);
+        spriteRenderer = block.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        spriteRenderer.color = Color.white;
+
+        block.transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
+        //spriteRenderer.size = block.transform.position;
+        switch (value)
+        {
+            case 2:
+                spriteRenderer.sprite = imgForValue2;
+                break;
+            case 4:
+                spriteRenderer.sprite = imgForValue4;
+                break;
+            case 8:
+                spriteRenderer.sprite = imgForValue8;
+                break;
+            case 16:
+                spriteRenderer.sprite = imgForValue16;
+                break;
+            case 32:
+                spriteRenderer.sprite = imgForValue32;
+                break;
+            case 64:
+                spriteRenderer.sprite = imgForValue64;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException("error", value, null);
+        }
         _blocks.Add(block);
     }
 
