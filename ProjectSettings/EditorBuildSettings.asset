@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MJ2 - Estudiar.unity
     guid: 9cdf88fd99a045f4d9157059e0bb153f
   - enabled: 1
-    path: Assets/Scenes/MJ2 - Acomodar.unity
+    path: Assets/Scenes/OrderGame.unity
     guid: 41b3923343fd7cd468dc02e8b344f8dc
   m_configObjects: {}
