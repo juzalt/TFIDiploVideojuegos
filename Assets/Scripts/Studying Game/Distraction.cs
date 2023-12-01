@@ -4,6 +4,7 @@ public class Distraction : Consumable
 {
     [SerializeField] private float baseDistractionMagnitude = 1f;
     [SerializeField] private Vector2 sizeRange;
+    [SerializeField] private float damageRate = 1.8f;
 
     private float distractionMagnitude;
     public float DistractionMagnitude { get => distractionMagnitude; }
@@ -12,7 +13,7 @@ public class Distraction : Consumable
     {
         base.OnEnable();
         SetSize();
-        SetMagnitude(transform.localScale.x);
+        SetMagnitude(transform.localScale.x * damageRate);
     }
 
     void Update()
