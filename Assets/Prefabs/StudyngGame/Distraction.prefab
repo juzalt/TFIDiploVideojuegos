@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeedMinMax: {x: 2, y: 7}
   baseDistractionMagnitude: 1
-  sizeRange: {x: 0.2, y: 0.5}
-  damageRate: 2
+  sizeRange: {x: 0.2, y: 0.4}
+  damageRate: 2.5
 --- !u!70 &7951434382635985222
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

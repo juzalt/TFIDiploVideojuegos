@@ -8,15 +8,16 @@ public class Interactable : MonoBehaviour
     [SerializeField] int miniGameSceneIndex;
     [SerializeField] UIPopUp uiPopUp;
     [SerializeField] PlayerInteractions player;
+    [SerializeField] MeshRenderer meshRenderer;
 
     Color glowColor = new(0.4f, 0.4f, 0.4f);
-    float glowfactor = 1.3f;
-    MeshRenderer meshRenderer;
+    float glowfactor = 1.9f;
+    //MeshRenderer meshRenderer;
 
     public virtual void Awake()
     {
         gameObject.layer = 6;
-        meshRenderer = GetComponent<MeshRenderer>();
+        //meshRenderer = GetComponent<MeshRenderer>();
     }
 
     public void Interact()
@@ -45,14 +46,14 @@ public class Interactable : MonoBehaviour
 
     public void OnMouseHover()
     {
-        Debug.Log("Mouse on the object");
-        meshRenderer.materials[1].SetColor("_EmissionColor", glowColor * glowfactor);
+        int glowMaterialIndex = meshRenderer.materials.Length - 1;
+        meshRenderer.materials[glowMaterialIndex].SetColor("_EmissionColor", glowColor * glowfactor);
     }
 
     public void OffMouseHover()
     {
-        Debug.Log("Mouse off the object");
-        meshRenderer.materials[1].SetColor("_EmissionColor", Color.black);
+        int glowMaterialIndex = meshRenderer.materials.Length - 1;
+        meshRenderer.materials[glowMaterialIndex].SetColor("_EmissionColor", Color.black);
     }
 
     [System.Serializable]
