@@ -7,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("StoryProgress", 0);
         PlayerPrefs.SetInt("OrderGameFinished", 0);
-        PlayerPrefs.SetInt("OrderGameFinished", 0);
+        PlayerPrefs.SetInt("StudyingGameFinished", 0);
         AudioManager.Instance.ChangeMusic();
     }
 
