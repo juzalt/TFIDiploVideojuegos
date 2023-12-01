@@ -256,6 +256,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneID);
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickNo);
+        AudioManager.Instance.ChangeMusic();
     }
 }
 

@@ -5,9 +5,13 @@ using UnityEngine;
  public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
+    public static AudioManager Instance { get => instance; }
+
+    [SerializeField] AudioSource ambientMusicAudioSource;
+    [SerializeField] AudioSource miniGameMusicAudioSource;
     AudioSource audioSource;
 
-    public static AudioManager Instance { get => instance; }
+    
 
     public enum Sound
     {
@@ -18,7 +22,8 @@ using UnityEngine;
         UIClickNo,
         WinMiniGame,
         LoseMiniGame,
-        MoveClothOG
+        MoveClothOG,
+        AmbientMusic
     }
 
     private void Awake()
@@ -44,9 +49,18 @@ using UnityEngine;
         audioSource.PlayOneShot(GetAudioClip(sound));
     }
 
-    public void PlayMusic(Sound sound)
+    public void ChangeMusic()
     {
-        audioSource.PlayOneShot(GetAudioClip(sound));
+        if (ambientMusicAudioSource.isPlaying)
+        {
+            ambientMusicAudioSource.Stop();
+            miniGameMusicAudioSource.Play();
+        }
+        else
+        {
+            miniGameMusicAudioSource.Stop();
+            ambientMusicAudioSource.Play();
+        }
     }
 
     private AudioClip GetAudioClip(Sound sound)
