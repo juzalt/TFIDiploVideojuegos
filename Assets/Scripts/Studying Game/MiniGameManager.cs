@@ -28,6 +28,7 @@ public class MiniGameManager : MonoBehaviour
         if (win)
         {
             endGameText.text = "Muy bien! \n Ya estudiaste para el examen \n ¿Querés seguir estudiando?";
+            PlayerPrefs.SetInt("StudyingGameFinished", 1);
         }
         else
         {

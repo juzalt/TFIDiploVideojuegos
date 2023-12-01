@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlaySound(AudioManager.Sound.WinMiniGame);
             endGameText.text = "¡Acomodaste todo! \r \n ¿Quieres repetirlo?";
+            PlayerPrefs.SetInt("OrderGameFinished", 1);
         }
         else
         {

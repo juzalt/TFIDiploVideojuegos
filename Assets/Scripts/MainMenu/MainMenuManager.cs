@@ -6,6 +6,8 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt("StoryProgress", 0);
+        PlayerPrefs.SetInt("OrderGameFinished", 0);
+        PlayerPrefs.SetInt("OrderGameFinished", 0);
         AudioManager.Instance.ChangeMusic();
     }
 
