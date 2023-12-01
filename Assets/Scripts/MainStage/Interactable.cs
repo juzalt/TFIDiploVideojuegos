@@ -33,9 +33,10 @@ public class Interactable : MonoBehaviour
 
     public void PlayMiniGame()
     {
-        SceneManager.LoadScene(miniGameSceneIndex);
+        Debug.Log("Play Mini Game" + gameObject.transform.name);
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickYes);
         AudioManager.Instance.ChangeMusic();
+        SceneManager.LoadScene(miniGameSceneIndex);
     }
 
     public void StayInMainScene()

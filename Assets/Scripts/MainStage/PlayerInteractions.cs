@@ -30,6 +30,11 @@ public class PlayerInteractions : MonoBehaviour
         InteractWithObjects();
         Move();
         AdjustPlayerYPosition();
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Debug.Log("Quit");
+            Application.Quit();
+        }
     }
 
     private void Move()

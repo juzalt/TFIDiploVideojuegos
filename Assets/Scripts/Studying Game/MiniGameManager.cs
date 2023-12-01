@@ -22,6 +22,15 @@ public class MiniGameManager : MonoBehaviour
         player.OnFinishGame -= EndGame;
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Debug.Log("Quit");
+            Application.Quit();
+        }
+    }
+
     void EndGame(bool win)
     {
         endGamePanel.SetActive(true);

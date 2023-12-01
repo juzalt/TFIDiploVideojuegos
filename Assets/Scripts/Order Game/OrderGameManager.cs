@@ -53,6 +53,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow)) Shift(Vector2.up);
         if (Input.GetKeyDown(KeyCode.RightArrow)) Shift(Vector2.right);
         if (Input.GetKeyDown(KeyCode.DownArrow)) Shift(Vector2.down);
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Debug.Log("Quit");
+            Application.Quit();
+        }
     }
 
     private void ChangeState(GameState newState)
