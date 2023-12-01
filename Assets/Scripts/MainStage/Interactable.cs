@@ -8,9 +8,10 @@ public class Interactable : MonoBehaviour
     [SerializeField] int miniGameSceneIndex;
     [SerializeField] UIPopUp uiPopUp;
     [SerializeField] PlayerInteractions player;
-    [SerializeField] MeshRenderer meshRenderer;
+    //[SerializeField] MeshRenderer meshRenderer;
     [SerializeField] GameObject light;
 
+    bool goesToMiniGame = false;
     Color glowColor = new(0.4f, 0.4f, 0.4f);
     float glowfactor = 1.9f;
     //MeshRenderer meshRenderer;
@@ -33,10 +34,12 @@ public class Interactable : MonoBehaviour
 
     public void PlayMiniGame()
     {
+        if (goesToMiniGame) { return;  }
         Debug.Log("Play Mini Game" + gameObject.transform.name);
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickYes);
         AudioManager.Instance.ChangeMusic();
         SceneManager.LoadScene(miniGameSceneIndex);
+        goesToMiniGame = true;
     }
 
     public void StayInMainScene()
@@ -49,16 +52,16 @@ public class Interactable : MonoBehaviour
 
     public void OnMouseHover()
     {
-        int glowMaterialIndex = meshRenderer.materials.Length - 1;
-        meshRenderer.materials[glowMaterialIndex].SetColor("_EmissionColor", glowColor * glowfactor);
+        //int glowMaterialIndex = meshRenderer.materials.Length - 1;
+        //meshRenderer.materials[glowMaterialIndex].SetColor("_EmissionColor", glowColor * glowfactor);
         if (light != null)
             light.SetActive(true);
     }
 
     public void OffMouseHover()
     {
-        int glowMaterialIndex = meshRenderer.materials.Length - 1;
-        meshRenderer.materials[glowMaterialIndex].SetColor("_EmissionColor", Color.black);
+        //int glowMaterialIndex = meshRenderer.materials.Length - 1;
+        //meshRenderer.materials[glowMaterialIndex].SetColor("_EmissionColor", Color.black);
         if (light != null)
             light.SetActive(false);
     }

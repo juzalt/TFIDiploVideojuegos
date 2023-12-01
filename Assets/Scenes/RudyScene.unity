@@ -1963,7 +1963,6 @@ MonoBehaviour:
     yesText: Acomodemos!
     noText: No acomodar
   player: {fileID: 465590469}
-  meshRenderer: {fileID: 1281330157}
   light: {fileID: 647802627}
 --- !u!1001 &223310460
 PrefabInstance:
@@ -2989,7 +2988,7 @@ MonoBehaviour:
   m_margin: {x: 39.121788, y: 0, z: 61.11438, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &446749493
@@ -7660,12 +7659,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255660080}
   m_CullTransparentMesh: 1
---- !u!23 &1281330157 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 18ae334929d33a245a356fca340702fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 227566577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289999484
 GameObject:
   m_ObjectHideFlags: 0
@@ -9662,12 +9655,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3477ae108c8bedf4c8f53002cda04606, type: 3}
---- !u!23 &1662887818 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1236288464573677493, guid: ca6075f2d640fea4e804b8af12b2e3ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 556568802}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1703430584
 GameObject:
   m_ObjectHideFlags: 0
@@ -10906,7 +10893,6 @@ MonoBehaviour:
     yesText: A estudiar!
     noText: Nahh, despues
   player: {fileID: 465590469}
-  meshRenderer: {fileID: 1662887818}
   light: {fileID: 247476766}
 --- !u!1 &1957319345
 GameObject:
