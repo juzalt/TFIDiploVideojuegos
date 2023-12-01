@@ -44,6 +44,11 @@ using UnityEngine;
         audioSource.PlayOneShot(GetAudioClip(sound));
     }
 
+    public void PlayMusic(Sound sound)
+    {
+        audioSource.PlayOneShot(GetAudioClip(sound));
+    }
+
     private AudioClip GetAudioClip(Sound sound)
     {
         foreach(AudioAssets.SoundAudioClip soundAudioClip in AudioAssets.Instance.sounds)
