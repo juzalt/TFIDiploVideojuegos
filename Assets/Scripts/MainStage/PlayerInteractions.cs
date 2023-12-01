@@ -14,7 +14,7 @@ public class PlayerInteractions : MonoBehaviour
     private Animator animator;
     private Vector3 destination;
     private Vector3 currentPosition;
-    private bool canMove;
+    private bool canMove = true;
 
     public bool CanMove { get => canMove; set => canMove = value; }
 

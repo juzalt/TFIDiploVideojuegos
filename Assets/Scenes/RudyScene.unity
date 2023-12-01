@@ -1354,7 +1354,6 @@ GameObject:
   - component: {fileID: 216404097}
   - component: {fileID: 216404101}
   - component: {fileID: 216404100}
-  - component: {fileID: 216404102}
   - component: {fileID: 216404099}
   m_Layer: 5
   m_Name: Button_Accept
@@ -1427,9 +1426,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 216404102}
-        m_TargetAssemblyTypeName: ClosePopup, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 961332706}
+        m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
+        m_MethodName: ClosePopUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1477,18 +1476,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216404096}
   m_CullTransparentMesh: 1
---- !u!114 &216404102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216404096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb86c533f8680534d89073ce7888c151, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &222972472
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,8 +3675,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 961332705}
+  - component: {fileID: 961332706}
   m_Layer: 5
-  m_Name: Intro
+  m_Name: Intro Story
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3718,6 +3706,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &961332706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961332704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3ff976bc2e3e749a53ed36192e3967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 465590469}
 --- !u!1001 &987555132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6873,10 +6874,10 @@ MonoBehaviour:
     titleText: {fileID: 446749492}
     yesBtnText: {fileID: 1860792644}
     noBtnText: {fileID: 1703430586}
-    helpTitle: "Deber\xEDa probar mi juego del cerebro que esquiva distracciones.
-      Pero quiero ir al balc\xF3n y ver la ciudad..."
-    yesText: Probar Juego
-    noText: No jugar
+    helpTitle: "Qu\xE9 ganas de ir al Balc\xF3n... pero deber\xEDa ponerme a estudiar...
+      lo que me cuesta concentrarme \xFAltimamente..."
+    yesText: "\xA1A estudiar!"
+    noText: "Nahh, despu\xE9s"
   player: {fileID: 465590469}
 --- !u!1 &1957319345
 GameObject:

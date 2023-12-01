@@ -9,13 +9,13 @@ public class ClosePopup : MonoBehaviour
         Debug.Log("openedBefore::" + openedBefore);
         if (openedBefore)
         {
-            this.gameObject.transform.parent.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
     public void Close()
     {
-        this.gameObject.transform.parent.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         openedBefore = true;
     }
 }

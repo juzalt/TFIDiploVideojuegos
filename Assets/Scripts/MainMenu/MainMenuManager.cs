@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    private void Start()
+    {
+        PlayerPrefs.SetInt("StoryProgress", 0);
+    }
+
     public void QuitGame()
     {
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);

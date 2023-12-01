@@ -35,6 +35,7 @@ public class RoomChanger : MonoBehaviour
 
     public void GoToLiving()
     {
+        if (!player.CanMove) { return; }
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);
         StartCoroutine(nameof(ChangeCameraPosition), livingEulerRotation);
         player.MoveToPosition(livingPosition);
@@ -44,6 +45,7 @@ public class RoomChanger : MonoBehaviour
 
     public void GoToBedroom()
     {
+        if (!player.CanMove) { return; }
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);
         StartCoroutine(nameof(ChangeCameraPosition), roomEulerRotation);
         player.MoveToPosition(roomPosition);
