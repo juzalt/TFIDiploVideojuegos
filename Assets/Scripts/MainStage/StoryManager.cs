@@ -26,4 +26,9 @@ public class StoryManager : MonoBehaviour
         player.CanMove = true;
         gameObject.SetActive(false);
     }
+
+    public void onRightClick()
+    {
+        AudioManager.Instance.PlaySound()
+    }
 }
