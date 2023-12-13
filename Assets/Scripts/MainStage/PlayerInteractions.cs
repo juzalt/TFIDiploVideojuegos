@@ -14,14 +14,16 @@ public class PlayerInteractions : MonoBehaviour
     private Animator animator;
     private Vector3 destination;
     private Vector3 currentPosition;
+    private MouseCursor mouseCursor;
     private bool canMove = true;
 
     public bool CanMove { get => canMove; set => canMove = value; }
 
-    void Start()
+    void Awake()
     {
         rudy = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        mouseCursor = GetComponent<MouseCursor>();
     }
 
     void Update()
@@ -125,6 +127,7 @@ public class PlayerInteractions : MonoBehaviour
             if (newInteractable != null && currentInteractable != newInteractable)
             {
                 currentInteractable = newInteractable;
+                mouseCursor.SetInteractableMouseCursor();
                 currentInteractable.OnMouseHover();
             }
         }
@@ -132,6 +135,7 @@ public class PlayerInteractions : MonoBehaviour
         {
             if (currentInteractable != null)
             {
+                mouseCursor.SetDefaultMouseCursor();
                 currentInteractable.OffMouseHover();
             }
             currentInteractable = null;
