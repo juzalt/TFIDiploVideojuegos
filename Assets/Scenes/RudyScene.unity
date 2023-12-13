@@ -1962,7 +1962,7 @@ MonoBehaviour:
       las monta\xF1as rusas \xBFY si mejor voy al parque de diversiones?"
     yesText: Acomodemos!
     noText: No acomodar
-  player: {fileID: 465590469}
+  player: {fileID: 465590473}
   light: {fileID: 647802627}
 --- !u!1001 &223310460
 PrefabInstance:
@@ -3207,8 +3207,9 @@ GameObject:
   m_Component:
   - component: {fileID: 465590471}
   - component: {fileID: 465590469}
-  - component: {fileID: 465590468}
+  - component: {fileID: 465590473}
   - component: {fileID: 465590472}
+  - component: {fileID: 465590468}
   m_Layer: 0
   m_Name: Rudy
   m_TagString: Untagged
@@ -3253,10 +3254,6 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 64
-  environmentLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  playerModel: {fileID: 1382106788}
 --- !u!4 &465590471
 Transform:
   m_ObjectHideFlags: 0
@@ -3288,6 +3285,22 @@ MonoBehaviour:
   defaultMouseCursor: {fileID: 2800000, guid: 2e9aae517e6d58e4cb8c65519fd8bc9b, type: 3}
   interactableMouseCursor: {fileID: 2800000, guid: a8c08a50394b94e449bb39292c9b9734,
     type: 3}
+--- !u!114 &465590473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465590467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11534829a7a5f3418ec91415743d022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerModel: {fileID: 1382106788}
 --- !u!1 &473046112
 GameObject:
   m_ObjectHideFlags: 0
@@ -6097,7 +6110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3ff976bc2e3e749a53ed36192e3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 465590469}
+  player: {fileID: 465590473}
 --- !u!1001 &987555132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7723,7 +7736,7 @@ MonoBehaviour:
   rotationSmoothness: 0.1
   roomEulerRotation: {x: 25, y: 45, z: 0}
   livingEulerRotation: {x: 25, y: -45, z: 0}
-  player: {fileID: 465590469}
+  player: {fileID: 465590473}
   roomPosition: {x: 0, y: 0, z: 0}
   livingPosition: {x: -16, y: 0, z: 3}
   goToLivingUI: {fileID: 1255660082}
@@ -10908,7 +10921,7 @@ MonoBehaviour:
       lo que me cuesta concentrarme \xFAltimamente..."
     yesText: A estudiar!
     noText: Nahh, despues
-  player: {fileID: 465590469}
+  player: {fileID: 465590473}
   light: {fileID: 247476766}
 --- !u!1 &1957319345
 GameObject:

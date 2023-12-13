@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StoryManager : MonoBehaviour
 {
-    [SerializeField] PlayerInteractions player;
+    [SerializeField] PlayerMovement player;
 
     private void Start()
     {

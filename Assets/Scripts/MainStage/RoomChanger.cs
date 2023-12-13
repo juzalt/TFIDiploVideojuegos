@@ -11,7 +11,7 @@ public class RoomChanger : MonoBehaviour
     [SerializeField] Vector3 livingEulerRotation;
 
     [Header("Player Parameters")]
-    [SerializeField] PlayerInteractions player;
+    [SerializeField] PlayerMovement player;
     [SerializeField] Vector3 roomPosition;
     [SerializeField] Vector3 livingPosition;
 
