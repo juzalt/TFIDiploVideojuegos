@@ -3208,6 +3208,7 @@ GameObject:
   - component: {fileID: 465590471}
   - component: {fileID: 465590469}
   - component: {fileID: 465590468}
+  - component: {fileID: 465590472}
   m_Layer: 0
   m_Name: Rudy
   m_TagString: Untagged
@@ -3272,6 +3273,21 @@ Transform:
   - {fileID: 1051417441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &465590472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465590467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a78cc5db0f61e340af9e1049fcdca50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMouseCursor: {fileID: 2800000, guid: 2e9aae517e6d58e4cb8c65519fd8bc9b, type: 3}
+  interactableMouseCursor: {fileID: 2800000, guid: a8c08a50394b94e449bb39292c9b9734,
+    type: 3}
 --- !u!1 &473046112
 GameObject:
   m_ObjectHideFlags: 0
