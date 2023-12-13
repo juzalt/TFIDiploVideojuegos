@@ -51,7 +51,6 @@ using UnityEngine;
 
     public void ChangeMusic()
     {
-        Debug.Log("Ambientmusic: " + ambientMusicAudioSource.isPlaying);
         if (ambientMusicAudioSource.isPlaying)
         {
             ambientMusicAudioSource.Stop();

@@ -30,7 +30,6 @@ public class Interactable : MonoBehaviour
     public void PlayMiniGame()
     {
         if (goesToMiniGame) { return;  }
-        Debug.Log("Play Mini Game" + gameObject.transform.name);
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickYes);
         AudioManager.Instance.ChangeMusic();
         SceneManager.LoadScene(miniGameSceneIndex);
@@ -41,6 +40,7 @@ public class Interactable : MonoBehaviour
     {
         uiPopUp.popUp.SetActive(false);
         player.CanMove = true;
+        uiPopUp.YesBTN.onClick.RemoveListener(PlayMiniGame);
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickNo);
     }
 
