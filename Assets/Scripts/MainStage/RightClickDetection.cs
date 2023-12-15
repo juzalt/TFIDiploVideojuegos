@@ -9,12 +9,22 @@ public class RightClickDetection : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             OnRightClick();
+        } 
+        
+        if (Input.GetMouseButtonUp(1)) 
+        {
+            OffRightClick();
         }
     }
 
     public void OnRightClick()
     {
-        Debug.Log("aqui");
         AudioManager.Instance.PlaySound(AudioManager.Sound.DownRightClick);
+    }
+
+    public void OffRightClick()
+    {
+        Debug.Log("off");
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UpRightClick);
     }
 }
