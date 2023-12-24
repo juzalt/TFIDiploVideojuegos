@@ -1,33 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class PlayerInteractions : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    [Header("Layer Mask Settings")]
     [SerializeField] LayerMask interactionLayer = default;
-    [SerializeField] LayerMask environmentLayer = default;
 
     [SerializeField] GameObject playerModel;
 
     private Interactable currentInteractable;
-    NavMeshAgent rudy;
+    UnityEngine.AI.NavMeshAgent rudy;
     private Animator animator;
     private Vector3 destination;
     private Vector3 currentPosition;
+    private MouseCursor mouseCursor;
     private bool canMove = true;
 
     public bool CanMove { get => canMove; set => canMove = value; }
 
-    void Start()
+    void Awake()
     {
-        rudy = GetComponent<NavMeshAgent>();
+        rudy = GetComponent<UnityEngine.AI.NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        mouseCursor = GetComponent<MouseCursor>();
     }
 
     void Update()
     {
-        ShowMouseHover();
-        InteractWithObjects();
         Move();
         AdjustPlayerYPosition();
         if (Input.GetKey(KeyCode.Escape))
@@ -92,49 +91,6 @@ public class PlayerInteractions : MonoBehaviour
                 rudy.nextPosition = currentPosition;
                 rudy.destination = destination;
             }
-        }
-    }
-
-    private void InteractWithObjects()
-    {
-        if (Input.GetMouseButtonDown(0)) // Left mouse button click
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, interactionLayer))
-            {
-                currentInteractable = hit.collider.GetComponent<Interactable>();
-                if (currentInteractable != null)
-                {
-                    AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);
-                    currentInteractable.Interact();
-                }
-            }
-        }
-    }
-
-    private void ShowMouseHover()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactionLayer))
-        {
-            Interactable newInteractable = hit.collider.GetComponent<Interactable>();
-            if (newInteractable != null && currentInteractable != newInteractable)
-            {
-                currentInteractable = newInteractable;
-                currentInteractable.OnMouseHover();
-            }
-        }
-        else
-        {
-            if (currentInteractable != null)
-            {
-                currentInteractable.OffMouseHover();
-            }
-            currentInteractable = null;
         }
     }
 }
