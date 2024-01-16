@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeedMinMax: {x: 2, y: 6}
-  knowledgeMagnitude: 1
+  knowledgeMagnitude: 1.5
 --- !u!70 &7197150174830788674
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialConcentration: 10
   endGameKnowledge: 10
-  brainGrowthRate: 1.1
+  brainGrowthRate: 1.09
   inmunityTime: 1
   blinkingMaterial: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   blinkingRate: 7

@@ -689,8 +689,8 @@ MonoBehaviour:
     type: 3}
   timeBetweenSpawns: 2
   spawningGetsFasterWithTime: 1
-  spawningChangingRate: 0.05
-  minSpawningRate: 0.5
+  spawningChangingRate: 0.03
+  minSpawningRate: 1
   goToPlayer: 0
   player: {fileID: 389370137}
   shouldSpawn: 1
