@@ -23,7 +23,9 @@ using UnityEngine;
         WinMiniGame,
         LoseMiniGame,
         MoveClothOG,
-        AmbientMusic
+        AmbientMusic,
+        UpRightClick,
+        DownRightClick
     }
 
     private void Awake()
