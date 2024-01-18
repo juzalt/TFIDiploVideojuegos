@@ -3012,7 +3012,7 @@ GameObject:
   - component: {fileID: 449791226}
   - component: {fileID: 449791225}
   m_Layer: 5
-  m_Name: PopupCanvas
+  m_Name: StoryUI and Room Changer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6111,6 +6111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 465590473}
+  storyPartsCollection: {fileID: 11400000, guid: 9902d6517b667d94ebe453bdc86c709d,
+    type: 2}
+  quote: {fileID: 1972348398}
+  middleText: {fileID: 718545874}
+  quote2: {fileID: 1040769951}
 --- !u!1001 &987555132
 PrefabInstance:
   m_ObjectHideFlags: 0
