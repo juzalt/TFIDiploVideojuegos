@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Node _nodePrefab;
     [SerializeField] private SpriteRenderer _boardPrefab;
     [SerializeField] private Block _blockPrefab;
-    [SerializeField] Camera camera; // Esto no estaba en el tuto pero hacer Camera.main.transform devolvia un error (no encontraba a Camera)
+    [SerializeField] Camera camera; 
     [SerializeField] private List<BlockType> _types;
     [SerializeField] private float _travelTime = 0.2f;
     [SerializeField] private int _winCondition = 2048; // Podemos cambiar este numero a cualquier multiplo de 2 segun que tan largo queremos que sea el juego.
