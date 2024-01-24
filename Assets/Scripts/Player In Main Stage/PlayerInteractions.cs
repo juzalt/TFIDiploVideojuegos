@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class PlayerInteractions : MonoBehaviour
 {
@@ -6,11 +8,13 @@ public class PlayerInteractions : MonoBehaviour
 
     private Interactable currentInteractable;
     private MouseCursor mouseCursor;
+    private PlayerMovement player;
     
 
     void Awake()
     {
         mouseCursor = GetComponent<MouseCursor>();
+        player = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -47,8 +51,11 @@ public class PlayerInteractions : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactionLayer))
+        if (IsMouseOverUIWithIgnores())
+        {
+            mouseCursor.SetInteractableMouseCursor();
+        }
+        else if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactionLayer) && player.CanMove)
         {
             Interactable newInteractable = hit.collider.GetComponent<Interactable>();
             if (newInteractable != null && currentInteractable != newInteractable)
@@ -62,10 +69,33 @@ public class PlayerInteractions : MonoBehaviour
         {
             if (currentInteractable != null)
             {
-                mouseCursor.SetDefaultMouseCursor();
+                
                 currentInteractable.OffMouseHover();
             }
+            mouseCursor.SetDefaultMouseCursor();
             currentInteractable = null;
         }
+    }
+
+    private bool IsMouseOverUIWithIgnores()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
+
+        List<RaycastResult> rayCastResultList = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, rayCastResultList);
+
+        for (int i = 0; i < rayCastResultList.Count; i++)
+        {
+
+            bool condition1 = !(rayCastResultList[i].gameObject.layer == LayerMask.NameToLayer("UI"));
+            bool condition2 = rayCastResultList[i].gameObject.GetComponent<MouseCursorIgnore>() != null;
+            if (condition1 || condition2)
+            {
+                rayCastResultList.RemoveAt(i);
+                i--;
+            }
+        }
+        return rayCastResultList.Count > 0;
     }
 }

@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Rudy
-  defaultCursor: {fileID: 2800000, guid: 2e9aae517e6d58e4cb8c65519fd8bc9b, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 2d9042991386a6e4abdca732a46b59e5, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

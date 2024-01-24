@@ -1,4 +1,6 @@
+using UnityEngine.EventSystems;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class MouseCursor : MonoBehaviour
 {
@@ -16,5 +18,5 @@ public class MouseCursor : MonoBehaviour
     public void SetInteractableMouseCursor()
     {
         Cursor.SetCursor(interactableMouseCursor, hotSpot, cursorMode);
-    }
+    }    
 }
