@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite imgForValue16;
     [SerializeField] Sprite imgForValue32;
     [SerializeField] Sprite imgForValue64;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject pauseMenuQuitBtn;
+    [SerializeField] GameObject pauseMenuContinueBtn;
 
     private GameState _state;
     private int _round;
@@ -63,10 +66,38 @@ public class GameManager : MonoBehaviour
 
         if (_state != GameState.WaitingInput) return;
 
+        if (!pauseMenu.activeInHierarchy) CheckMovementInput();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseMenu.activeInHierarchy)
+            {
+                ResumeGame();
+            } else
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    void CheckMovementInput()
+    {
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) Shift(Vector2.left);
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) Shift(Vector2.up);
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) Shift(Vector2.right);
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) Shift(Vector2.down);   
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) Shift(Vector2.down);
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void ChangeState(GameState newState)
