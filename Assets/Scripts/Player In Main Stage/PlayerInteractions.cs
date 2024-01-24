@@ -51,7 +51,7 @@ public class PlayerInteractions : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (IsMouseOverUIWithIgnores())
+        if (mouseCursor.IsMouseOverUIWithIgnores())
         {
             mouseCursor.SetInteractableMouseCursor();
         }
@@ -77,25 +77,4 @@ public class PlayerInteractions : MonoBehaviour
         }
     }
 
-    private bool IsMouseOverUIWithIgnores()
-    {
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-        pointerEventData.position = Input.mousePosition;
-
-        List<RaycastResult> rayCastResultList = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(pointerEventData, rayCastResultList);
-
-        for (int i = 0; i < rayCastResultList.Count; i++)
-        {
-
-            bool condition1 = !(rayCastResultList[i].gameObject.layer == LayerMask.NameToLayer("UI"));
-            bool condition2 = rayCastResultList[i].gameObject.GetComponent<MouseCursorIgnore>() != null;
-            if (condition1 || condition2)
-            {
-                rayCastResultList.RemoveAt(i);
-                i--;
-            }
-        }
-        return rayCastResultList.Count > 0;
-    }
 }
