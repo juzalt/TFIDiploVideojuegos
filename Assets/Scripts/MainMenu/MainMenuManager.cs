@@ -20,7 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateMouseCursor();
+        mouseCursor.UpdateMouseCursor();
     }
 
     public void QuitGame()
@@ -39,17 +39,5 @@ public class MainMenuManager : MonoBehaviour
     {
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClick);
         SceneManager.LoadScene(sceneID);
-    }
-
-    private void UpdateMouseCursor()
-    {
-        if (mouseCursor.IsMouseOverUIWithIgnores())
-        {
-            mouseCursor.SetInteractableMouseCursor();
-        }
-        else
-        {
-            mouseCursor.SetDefaultMouseCursor();
-        }
     }
 }

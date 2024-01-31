@@ -11,6 +11,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI endGameText;
     [SerializeField] GameObject endGamePanel;
 
+    private MouseCursor mouseCursor;
 
     void OnEnable()
     {
@@ -22,6 +23,16 @@ public class MiniGameManager : MonoBehaviour
         player.OnFinishGame -= EndGame;
     }
 
+    private void Awake()
+    {
+        mouseCursor = GetComponent<MouseCursor>();
+    }
+
+    private void Start()
+    {
+        mouseCursor.HideCursor();
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -29,11 +40,13 @@ public class MiniGameManager : MonoBehaviour
             Debug.Log("Quit");
             Application.Quit();
         }
+        mouseCursor.UpdateMouseCursor();
     }
 
     void EndGame(bool win)
     {
         endGamePanel.SetActive(true);
+        mouseCursor.ShowCursor();
         if (win)
         {
             endGameText.text = "Muy bien! \n Ya estudiaste para el examen \n ¿Querés seguir estudiando?";

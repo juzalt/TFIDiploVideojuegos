@@ -37,12 +37,18 @@ public class GameManager : MonoBehaviour
     private List<Block> _blocks;
 
     private SpriteRenderer _spriteRenderer;
+    private MouseCursor mouseCursor;
 
     private BlockType GetBlockTypeByValue(int value) => _types.First(t=> t.Value == value);
 
+    private void Awake()
+    {
+        mouseCursor = GetComponent<MouseCursor>();
+    }
     void Start()
     {
         ChangeState(GameState.GenerateLevel);
+        mouseCursor.HideCursor();
     }
 
     private void Update()
@@ -59,6 +65,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Quit");
             Application.Quit();
         }
+        mouseCursor.UpdateMouseCursor();
     }
 
     private void ChangeState(GameState newState)
@@ -91,6 +98,7 @@ public class GameManager : MonoBehaviour
     void EndGame(bool win)
     {
         endGamePanel.SetActive(true);
+        mouseCursor.ShowCursor();
         if (win)
         {
             AudioManager.Instance.PlaySound(AudioManager.Sound.WinMiniGame);

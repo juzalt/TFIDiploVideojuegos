@@ -20,6 +20,16 @@ public class MouseCursor : MonoBehaviour
         Cursor.SetCursor(interactableMouseCursor, hotSpot, cursorMode);
     }
 
+    public void HideCursor()
+    {
+        Cursor.visible = false;
+    }
+
+    public void ShowCursor()
+    {
+        Cursor.visible = true;
+    }
+
     public bool IsMouseOverUIWithIgnores()
     {
         PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
@@ -40,5 +50,17 @@ public class MouseCursor : MonoBehaviour
             }
         }
         return rayCastResultList.Count > 0;
+    }
+
+    public void UpdateMouseCursor()
+    {
+        if (IsMouseOverUIWithIgnores())
+        {
+            SetInteractableMouseCursor();
+        }
+        else
+        {
+            SetDefaultMouseCursor();
+        }
     }
 }
