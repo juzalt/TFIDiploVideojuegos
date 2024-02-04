@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite imgForValue32;
     [SerializeField] Sprite imgForValue64;
     [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject pauseMenuQuitBtn;
-    [SerializeField] GameObject pauseMenuContinueBtn;
+    [SerializeField] Button pauseMenuQuitBtn;
+    [SerializeField] Button pauseMenuContinueBtn;
 
     private GameState _state;
     private int _round;
@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     {
         ChangeState(GameState.GenerateLevel);
         mouseCursor.HideCursor();
+
+        pauseMenuQuitBtn.onClick.AddListener(() => GoBackToMainScene(1));
     }
 
     private void Update()

@@ -1011,8 +1011,8 @@ MonoBehaviour:
   imgForValue32: {fileID: 21300000, guid: 1d3941e8e65745a42a310e612712dfa7, type: 3}
   imgForValue64: {fileID: 21300000, guid: c5821b406278aba49ad76dfdf1e002c1, type: 3}
   pauseMenu: {fileID: 1986812995}
-  pauseMenuQuitBtn: {fileID: 0}
-  pauseMenuContinueBtn: {fileID: 0}
+  pauseMenuQuitBtn: {fileID: 2922860008145036685}
+  pauseMenuContinueBtn: {fileID: 2922860008145036684}
 --- !u!4 &621755915
 Transform:
   m_ObjectHideFlags: 0
@@ -2540,13 +2540,25 @@ PrefabInstance:
     - target: {fileID: 7213987280763982577, guid: c403a069c9b973e499816b146b2e6bf4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c403a069c9b973e499816b146b2e6bf4, type: 3}
+--- !u!1 &2922860008145036684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9071942959170876079, guid: c403a069c9b973e499816b146b2e6bf4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2922860008145036683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2922860008145036685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6912797810742509390, guid: c403a069c9b973e499816b146b2e6bf4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2922860008145036683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3222708333147698626
 PrefabInstance:
   m_ObjectHideFlags: 0
