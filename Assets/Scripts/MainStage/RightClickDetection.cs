@@ -28,7 +28,6 @@ public class RightClickDetection : MonoBehaviour
 
     public void OffRightClick()
     {
-        Debug.Log("off");
         Array.ForEach(Interactables, (interactable) => interactable.OffMouseHover());
         AudioManager.Instance.PlaySound(AudioManager.Sound.UpRightClick);
     }

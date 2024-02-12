@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] TextMeshProUGUI endGameText;
     [SerializeField] GameObject endGamePanel;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] Button pauseMenuQuitBtn;
+    [SerializeField] Button pauseMenuContinueBtn;
 
     private MouseCursor mouseCursor;
 
@@ -31,16 +35,50 @@ public class MiniGameManager : MonoBehaviour
     private void Start()
     {
         mouseCursor.HideCursor();
+
+        pauseMenuQuitBtn.onClick.AddListener(() => GoBackToMainScene(1));
+        pauseMenuContinueBtn.onClick.AddListener(() => ResumeGame());
     }
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            Debug.Log("Quit");
             Application.Quit();
         }
         mouseCursor.UpdateMouseCursor();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseMenu.activeInHierarchy)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void GoBackToMainScene(int sceneID)
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneID);
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickNo);
+        AudioManager.Instance.ChangeMusic();
     }
 
     void EndGame(bool win)
