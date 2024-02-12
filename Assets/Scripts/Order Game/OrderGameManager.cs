@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         mouseCursor.HideCursor();
 
         pauseMenuQuitBtn.onClick.AddListener(() => GoBackToMainScene(1));
+        pauseMenuContinueBtn.onClick.AddListener(() => ResumeGame());
     }
 
     private void Update()
