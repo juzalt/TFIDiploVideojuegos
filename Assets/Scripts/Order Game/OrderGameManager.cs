@@ -304,6 +304,7 @@ public class GameManager : MonoBehaviour
 
     public void GoBackToMainScene(int sceneID)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneID);
         AudioManager.Instance.PlaySound(AudioManager.Sound.UIClickNo);
         AudioManager.Instance.ChangeMusic();

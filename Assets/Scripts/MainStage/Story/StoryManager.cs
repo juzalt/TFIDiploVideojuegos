@@ -10,7 +10,7 @@ public class StoryManager : MonoBehaviour
     private int playerProgress = 0;
     private void Start()
     {
-        Debug.Log(PlayerPrefs.GetInt("StoryProgress"));
+        Debug.Log("StoryProgress::" + PlayerPrefs.GetInt("StoryProgress"));
         /*
         if (PlayerPrefs.GetInt("StoryProgress") != 0)
         {
