@@ -676,7 +676,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3544763986864049373}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
         m_MethodName: ClosePopUp
         m_Mode: 1
@@ -697,7 +697,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5479242881081853993}
-  - component: {fileID: 3544763986864049373}
   - component: {fileID: 3766345647398551624}
   m_Layer: 5
   m_Name: PauseMenu
@@ -730,24 +729,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000030517578, y: 0.000030517578}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3544763986864049373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7213987280763982577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb3ff976bc2e3e749a53ed36192e3967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  storyPartsCollection: {fileID: 11400000, guid: 9902d6517b667d94ebe453bdc86c709d,
-    type: 2}
-  quote: {fileID: 5442620257492705628}
-  middleText: {fileID: 0}
-  quote2: {fileID: 0}
 --- !u!114 &3766345647398551624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,7 +937,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3544763986864049373}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
         m_MethodName: ClosePopUp
         m_Mode: 1
