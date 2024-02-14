@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a840bf805340fb4cb24c054ffaf75c9, type: 3}
   m_Name: YaOrdeno
   m_EditorClassIdentifier: 
-  firstQuote: '"Que linda quedo la cama ordenada"'
+  firstQuote: "\"Que linda qued\xF3 la cama ordenada\""
   Text: "Rudy siente un poco de sue\xF1o."
   secondQuote: "\"Me queda estudiar para el examen de ma\xF1ana\""
