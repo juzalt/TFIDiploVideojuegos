@@ -62,12 +62,6 @@ public class GameManager : MonoBehaviour
     {
         mouseCursor.UpdateMouseCursor();
 
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Debug.Log("Quit");
-            Application.Quit();
-        }
-
         if (_state != GameState.WaitingInput) return;
 
         if (!pauseMenu.activeInHierarchy) CheckMovementInput();
@@ -95,12 +89,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        mouseCursor.ShowCursor();
         controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
 
     void ResumeGame()
     {
+        mouseCursor.HideCursor();
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }

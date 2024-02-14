@@ -29,11 +29,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         AdjustPlayerYPosition();
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Debug.Log("Quit");
-            Application.Quit();
-        }
     }
 
     private void Move()

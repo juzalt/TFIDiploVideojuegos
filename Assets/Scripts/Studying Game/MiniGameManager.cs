@@ -60,6 +60,7 @@ public class MiniGameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        mouseCursor.ShowCursor();
         Time.timeScale = 0;
         controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
@@ -67,6 +68,7 @@ public class MiniGameManager : MonoBehaviour
 
     void ResumeGame()
     {
+        mouseCursor.HideCursor();
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }

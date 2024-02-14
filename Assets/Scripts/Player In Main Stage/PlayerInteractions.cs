@@ -21,11 +21,6 @@ public class PlayerInteractions : MonoBehaviour
     {
         ShowMouseHover();
         InteractWithObjects();
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Debug.Log("Quit");
-            Application.Quit();
-        }
     }
 
     private void InteractWithObjects()
