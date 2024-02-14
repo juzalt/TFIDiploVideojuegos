@@ -12,6 +12,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI endGameText;
     [SerializeField] GameObject endGamePanel;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject controlsMenu;
     [SerializeField] Button pauseMenuQuitBtn;
     [SerializeField] Button pauseMenuContinueBtn;
 
@@ -42,10 +43,6 @@ public class MiniGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
         mouseCursor.UpdateMouseCursor();
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -61,9 +58,10 @@ public class MiniGameManager : MonoBehaviour
         }
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0;
+        controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
 
@@ -71,6 +69,12 @@ public class MiniGameManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void ShowControlsMenu()
+    {
+        pauseMenu.SetActive(false);
+        controlsMenu.SetActive(true);  
     }
 
     public void GoBackToMainScene(int sceneID)

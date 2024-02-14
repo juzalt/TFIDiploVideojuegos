@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite imgForValue32;
     [SerializeField] Sprite imgForValue64;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject controlsMenu;
     [SerializeField] Button pauseMenuQuitBtn;
     [SerializeField] Button pauseMenuContinueBtn;
 
@@ -91,9 +92,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) Shift(Vector2.down);
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0;
+        controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
 
@@ -101,6 +103,12 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void ShowControlsMenu()
+    {
+        pauseMenu.SetActive(false);
+        controlsMenu.SetActive(true);
     }
 
     private void ChangeState(GameState newState)
