@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     private BlockType GetBlockTypeByValue(int value) => _types.First(t=> t.Value == value);
 
+    private Boolean _blocksHaveBeenMoved = false;
+
     private void Awake()
     {
         mouseCursor = GetComponent<MouseCursor>();
@@ -229,6 +231,7 @@ public class GameManager : MonoBehaviour
 
     void Shift(Vector2 dir)
     {
+        _blocksHaveBeenMoved = false;
         AudioManager.Instance.PlaySound(AudioManager.Sound.MoveClothOG);
         ChangeState(GameState.Moving);
 
@@ -238,6 +241,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var block in orderedBlocks)
         {
+            _blocksHaveBeenMoved = false;
             var next = block.Node;
             do
             {
@@ -249,13 +253,18 @@ public class GameManager : MonoBehaviour
                     // Entra acá cuando hay un nodo en la dirección a la que quiere ir
 
                     // Si puede mergear, mergea.
-                    if (possibleNode.OccupiedBlock !=  null && possibleNode.OccupiedBlock.CanMerge(block.Value))
+                    if (possibleNode.OccupiedBlock != null && possibleNode.OccupiedBlock.CanMerge(block.Value))
                     {
+                        _blocksHaveBeenMoved = true;
                         block.MergeBlock(possibleNode.OccupiedBlock);
                         AudioManager.Instance.PlaySound(AudioManager.Sound.GainWisdomSG);
-                    } 
+                    }
                     // Si no es posible, el bloque se mueve de nodo
-                    else if (possibleNode.OccupiedBlock == null) next = possibleNode;
+                    else if (possibleNode.OccupiedBlock == null)
+                    {
+                        _blocksHaveBeenMoved = true;
+                        next = possibleNode;
+                    }
                 }
 
             } while (next != block.Node);
@@ -277,7 +286,13 @@ public class GameManager : MonoBehaviour
                 MergeBlocks(block.MergingBlock, block);
             }
 
-            ChangeState(GameState.SpawningBlocks);
+            if (_blocksHaveBeenMoved)
+            {
+                ChangeState(GameState.SpawningBlocks);
+            } else
+            {
+                ChangeState(GameState.WaitingInput);
+            }
         });
     }
 
